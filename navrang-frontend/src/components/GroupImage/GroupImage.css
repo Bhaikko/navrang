@@ -1,0 +1,38 @@
+.GroupImageContainer {
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.Typing {
+    margin: 0;
+    padding-left: 10vw;
+    padding-top: 20vh;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    line-height: 75px;
+}
+
+.Typing::after {
+    content: "";
+    width: 1px;
+    height: 10%;
+    right: -10px;
+    border-right: 2px solid black;
+    animation: blink 0.5s infinite ease;
+    
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
