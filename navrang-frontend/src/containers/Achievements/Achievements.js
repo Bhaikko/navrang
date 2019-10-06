@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './Achievements.css';
 import Achievement from './Achievement/Achievement';
+import Title from './../../components/Title/Title';
 
 
 import { ACHIEVEMENTS } from '../../data/data';
@@ -18,7 +19,7 @@ class Achievements extends Component {
     render () {
         return (
             <div className={classes.Achievements}>
-                <h3 className={classes.Header} >Achievements</h3>
+                <Title >Achievements</Title>
                 <div className={classes.AchievementsBox}>
                     {this.state.achievements.map(achievement => (<Achievement key={achievement.id} imageUrl={achievement.imageUrl} title={achievement.title} description={achievement.description} />))}
                 </div>

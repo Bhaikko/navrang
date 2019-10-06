@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import classes from './GroupImage.css';
 
-import groupImagePhoto from './../../assets/images/groupImage.jpg';
+import groupImagePhoto from './../../assets/images/groupImage.jpeg';
 
 const GroupImage = (props) => {
 
