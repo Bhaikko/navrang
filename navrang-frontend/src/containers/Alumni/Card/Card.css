@@ -1,0 +1,51 @@
+.Card {
+    width: 27vw;
+    height: 75vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px;
+    height: 100%;
+}
+
+.ImageContainter {
+    width: 100%;
+    border: 1px solid grey;
+    
+}
+
+.Image {
+    /* position: absolute; */
+    /* top: -5px; */
+    transform: translateY(-10%);
+    width: 100%;
+}
+
+.Header {
+    padding-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+
+.Designation {
+    padding-top: 10px;
+    text-align: center;
+    /* text-transform: uppercase; */
+    letter-spacing: 10px;
+}
+
+.About {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.ContactContainer {
+    width: 10%;
+    display: inline-block;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 50px;
+}
+
+.Contact {
+    width: 100%;
+}

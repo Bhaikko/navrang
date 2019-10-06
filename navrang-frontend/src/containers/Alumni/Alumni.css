@@ -1,0 +1,22 @@
+.AlumniContainer {
+    margin: 0;
+    padding: 10px;
+    background-color: rgba(246, 246, 246);
+    margin-top: 10px;
+    overflow: hidden;
+    height: 150vh;
+}
+
+.Header {
+    padding-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+
+.Alumni {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+}

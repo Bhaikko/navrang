@@ -23,11 +23,21 @@ const GroupImage = (props) => {
             }
         } , 250);
     }
+
+    const parallax = () => {
+        window.addEventListener("scroll", () => {
+            const parallax = document.getElementById("parallax");
+            let offset = window.pageYOffset;
+            parallax.style.backgroundPositionY = `${1 * offset * 0.3}px`;
+
+        });
+    }
     
     useEffect(textWriter);
+    useEffect(parallax);
 
     return (
-        <div className={classes.GroupImageContainer} style={{backgroundImage: `url(${groupImagePhoto})`}}>
+        <div className={classes.GroupImageContainer} style={{backgroundImage: `url(${groupImagePhoto})`}} id="parallax" >
             <h1 className={classes.Typing} id="text">
                 We Are Navrang,\
                 The Theatre Society Of\

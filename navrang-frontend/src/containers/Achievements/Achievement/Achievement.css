@@ -1,0 +1,23 @@
+.Achievement {
+    /* height: 75vh; */
+    max-height: 80vh;
+    width: 25vw;
+    background-color: white;
+    border-radius: 2%;
+    overflow: hidden;
+    position: relative;
+    padding: 5px;
+    /* border: 2px solid black; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Achievement img {
+    /* position: absolute; */
+    top: -5px;
+    width: 90%;
+    box-shadow: 5px solid grey;
+}
+
+.Achievement h2 {
+    text-align: center;
+}

@@ -28,7 +28,7 @@ class Toolbar extends Component {
         window.addEventListener("scroll", () => {
             const yOffset = window.pageYOffset;
 
-            if(yOffset > 200) {
+            if(yOffset > 400) {
                 if(!this.state.bChanged) {
                     newStyle = {
                         backgroundColor: "white",
