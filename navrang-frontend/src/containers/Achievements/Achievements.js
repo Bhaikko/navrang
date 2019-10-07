@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 import classes from './Achievements.css';
 import Achievement from './Achievement/Achievement';
-import Title from './../../components/Title/Title';
+import Title from './../../components/UI/Title/Title';
+import Button from './../../components/UI/Button/Button';
+import Container from './../../components/UI/LandingPageContainer/LandingPageContainer';
 
 
 import { ACHIEVEMENTS } from '../../data/data';
@@ -18,15 +20,14 @@ class Achievements extends Component {
 
     render () {
         return (
-            <div className={classes.Achievements}>
+            <Container>
                 <Title >Achievements</Title>
-                <div className={classes.AchievementsBox}>
+                <div className={classes.Achievements}>
                     {this.state.achievements.map(achievement => (<Achievement key={achievement.id} imageUrl={achievement.imageUrl} title={achievement.title} description={achievement.description} />))}
                 </div>
 
-                <button className={classes.Button} >View All Achievements</button>
-
-            </div>
+                <Button>View All Achievements</Button>
+            </Container>
         );
 
     }

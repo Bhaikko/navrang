@@ -1,0 +1,13 @@
+
+.ContactContainer {
+    width: 25%;
+    display: inline-block;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 50px;
+    display: inline-block;
+}
+
+.Contact {
+    width: 100%;
+}

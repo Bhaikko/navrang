@@ -1,8 +1,7 @@
 import React from 'react';
 
 import classes from './Card.css';
-
-import InstagramIcon from './../../../assets/icons/instagram.png'
+import IconLink from './../../../components/IconLink/IconLink';
 
 const card = (props) => {
 
@@ -17,11 +16,9 @@ const card = (props) => {
             <div className={classes.About}>{props.about}</div>
             <hr />
             <span>Follow Me On: </span>
-            <a  target="_blank" href={props.contact}>
-                <div className={classes.ContactContainer}>
-                    <img className={classes.Contact} alt="contact" src={InstagramIcon} /> 
-                </div>
-            </a>
+            <IconLink 
+                icon="instagram"
+                contact={props.contact} />
         </div>
     );  
 

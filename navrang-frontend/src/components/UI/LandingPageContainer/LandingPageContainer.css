@@ -1,0 +1,8 @@
+.Container {
+    margin: 0;
+    padding: 10px;
+    padding-bottom: 30px;
+    background-color: rgba(246, 246, 246);
+    margin-top: 20px;
+    overflow: hidden;
+}

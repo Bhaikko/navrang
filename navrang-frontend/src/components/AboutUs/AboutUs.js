@@ -2,11 +2,12 @@ import React from 'react';
 
 import classes from './AboutUs.css';
 
-import Title from './../Title/Title';
+import Title from './../UI/Title/Title';
+import Container from './../UI/LandingPageContainer/LandingPageContainer';
 
 const aboutUs = (props) => {
     return (
-        <div>
+        <Container>
             <Title>About Us</Title>
             <p className={classes.AboutUs}>
                 What is Lorem Ipsum? <br/>
@@ -17,7 +18,7 @@ const aboutUs = (props) => {
                 <br/><br/>
             </p>
 
-        </div>
+        </Container>
     );
 }
 

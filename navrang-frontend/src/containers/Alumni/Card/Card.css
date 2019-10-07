@@ -38,15 +38,3 @@
     margin-top: 5px;
     font-size: 16px;
 }
-
-.ContactContainer {
-    width: 10%;
-    display: inline-block;
-    align-items: center;
-    vertical-align: middle;
-    margin-left: 50px;
-}
-
-.Contact {
-    width: 100%;
-}
