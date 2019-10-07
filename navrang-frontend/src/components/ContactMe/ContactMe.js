@@ -9,7 +9,7 @@ const contactMe = (props) => {
     return (
         <Container>
             <div className={classes.Name}>
-                Made with &#10084; Siddharth Pawar 
+                Made with &#10084; By Siddharth Pawar
                 <IconLink
                     icon="github"
                     contact="https://github.com/Bhaikko"

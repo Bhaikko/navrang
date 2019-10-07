@@ -18,7 +18,8 @@ const card = (props) => {
             <span>Follow Me On: </span>
             <IconLink 
                 icon="instagram"
-                contact={props.contact} />
+                contact={props.contact}
+                style={{width: "10%"}} />
         </div>
     );  
 
