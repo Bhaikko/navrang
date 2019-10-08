@@ -32,3 +32,13 @@ export class Event {
         this.info = info;
     }
 }
+
+export class Notice {
+    constructor (id, title, content, date, files) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.files = files;
+    }
+}
