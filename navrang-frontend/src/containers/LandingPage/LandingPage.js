@@ -17,12 +17,10 @@ class LandingPage extends Component {
                 <GroupImage />
                 <Achievements number={3} />
                 <Alumni number={3} />
-                <AboutUs />
-                <ContactUs />
+                <AboutUs id="aboutUs" />
+                <ContactUs id="contactUs" />
                 <ContactMe />
-
             </div>
-
         );
     }
 }

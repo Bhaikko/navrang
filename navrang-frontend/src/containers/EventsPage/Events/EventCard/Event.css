@@ -1,0 +1,30 @@
+.CardContainer {
+    flex-basis: 25%;
+    height: "50vh";
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    margin: 30px;
+    
+}
+
+.ImageContainer {
+    background-size: cover;
+    padding: 100px;
+    height: 150px;
+}
+
+.Register {
+    margin-left: 30%;
+
+    text-decoration: none;
+    color: red;
+}
+
+.LastDate {
+    text-align: center;
+}
+
+.ContactUs {
+    text-align: center;
+}

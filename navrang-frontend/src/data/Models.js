@@ -20,3 +20,14 @@ export class Team {
         this.contact = contact;
     }
 }
+
+export class Event {
+    constructor (id, name, date, link, imageUrl, info) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.link = link;
+        this.imageUrl = imageUrl;
+        this.info = info;
+    }
+}

@@ -7,7 +7,7 @@ import Container from './../UI/LandingPageContainer/LandingPageContainer';
 
 const aboutUs = (props) => {
     return (
-        <Container>
+        <Container id={props.id}>
             <Title>About Us</Title>
             <p className={classes.AboutUs}>
                 What is Lorem Ipsum? <br/>

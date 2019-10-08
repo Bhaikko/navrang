@@ -24,17 +24,27 @@ const GroupImage = (props) => {
         } , 250);
     }
 
-    const parallax = () => {
-        window.addEventListener("scroll", () => {
-            const parallax = document.getElementById("parallax");
-            let offset = window.pageYOffset;
-            parallax.style.backgroundPositionY = `${1 * offset * 0.3}px`;
+    const parallaxEffect = () => {
+        const parallax = document.getElementById("parallax");
+        let offset = window.pageYOffset;
+        parallax.style.backgroundPositionY = `${1 * offset * 0.3}px`;
 
-        });
+    }
+
+    const parallax = () => {
+        window.addEventListener("scroll", parallaxEffect);
     }
     
-    useEffect(textWriter);
-    useEffect(parallax);
+    
+    useEffect(() => {
+        textWriter();
+        parallax();
+
+        return () => {
+            window.removeEventListener("scroll", parallaxEffect);
+        }
+    });
+    
 
     return (
         <div className={classes.GroupImageContainer} style={{backgroundImage: `url(${groupImagePhoto})`}} id="parallax" >

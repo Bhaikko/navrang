@@ -5,11 +5,11 @@ import classes from './ContactUs.css';
 import ContactDetail from '../ContactDetail/ContactDetail';
 import Container from './../UI/LandingPageContainer/LandingPageContainer';
 import Title from './../UI/Title/Title';
-import ContactForm from './../../containers/ContactForm/ContactForm';
+import ContactForm from './../../containers/LandingPage/ContactForm/ContactForm';
 
 const contactUs = (props) => {
     return (
-        <Container >
+        <Container id={props.id} >
             <Title>Contact Us</Title>
             <div className={classes.Container}>
                 <div className={classes.ContactDetailContainer} > 

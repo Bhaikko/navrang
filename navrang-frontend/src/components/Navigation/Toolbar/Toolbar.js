@@ -12,7 +12,6 @@ class Toolbar extends Component {
         this.state = {
             styles: {
                 backgroundColor: "transparent",
-                textColor: "black",
                 height: "56px",
                 navItemsMarginTop: "5%"
             },
@@ -28,11 +27,10 @@ class Toolbar extends Component {
         window.addEventListener("scroll", () => {
             const yOffset = window.pageYOffset;
 
-            if(yOffset > 400) {
+            if(yOffset > 200) {
                 if(!this.state.bChanged) {
                     newStyle = {
                         backgroundColor: "white",
-                        textColor: "black",
                         height: "70px",
                         navItemsMarginTop: "7%"
                     }
@@ -42,7 +40,6 @@ class Toolbar extends Component {
                 if(this.state.bChanged) {
                     newStyle = {
                         backgroundColor: "transparent",
-                        textColor: "white",
                         height: "56px",
                         navItemsMarginTop: "5%"
                     
@@ -66,7 +63,7 @@ class Toolbar extends Component {
             <header className={classes.Toolbar} style={this.state.styles}>    
                 <Logo height="80%" />
                 <nav className={classes.DesktopOnly} >
-                    <NavigationItems color={this.state.styles.textColor} marginTop={this.state.styles.navItemsMarginTop}/>
+                    <NavigationItems marginTop={this.state.styles.navItemsMarginTop}/>
                 </nav>
     
             </header>

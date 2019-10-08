@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Button from './../../components/UI/Button/Button';
-import Input from './../../components/UI/Input/Input';
+import Button from '../../../components/UI/Button/Button';
+import Input from '../../../components/UI/Input/Input';
 
 import classes from './ContactForm.css';
 

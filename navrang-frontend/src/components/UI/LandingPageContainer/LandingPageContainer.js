@@ -7,7 +7,7 @@ const container = (props) => {
     const classesArray = [classes.Container, props.className];
 
     return (
-        <div className={classesArray.join(" ")} style={{...props.style}} >
+        <div className={classesArray.join(" ")} style={{...props.style}} id={props.id} >
             {props.children}
         </div>
     );
