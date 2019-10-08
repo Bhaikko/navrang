@@ -1,10 +1,11 @@
 // This file is temporary and will be deleted once database is established
 
 export class Achievements {
-    constructor ( id, imageUrl, title, description, date) {
+    constructor ( id, imageUrl, title, subtitle, description, date) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.title = title;
+        this.subtitle = subtitle;
         this.description = description;
         this.date = date;
     }

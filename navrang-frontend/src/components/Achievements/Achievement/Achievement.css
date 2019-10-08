@@ -1,14 +1,14 @@
 .Achievement {
-    /* height: 75vh; */
-    max-height: 80vh;
+    max-height: 90vh;
     width: 25vw;
+    flex-basis: 25%;
     background-color: white;
     border-radius: 2%;
     overflow: hidden;
     position: relative;
     padding: 5px;
-    /* border: 2px solid black; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px;
 }
 
 .Achievement img {
@@ -19,5 +19,10 @@
 }
 
 .Achievement h2 {
+    text-align: center;
+}
+
+.Subtitle {
+    color: grey;
     text-align: center;
 }

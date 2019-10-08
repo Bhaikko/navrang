@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 
-// import classes from './AlumniPage.css';
+import classes from './AlumniPage.css';
+
+import Container from './../../components/UI/LandingPageContainer/LandingPageContainer';
+import Title from './../../components/UI/Title/Title';
+import Alumni from '../../components/Alumni/Alumni';
+
+import { ALUMNI } from './../../data/data';
 
 class AlumniPage extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            ALUMNI
+        };
+    }
+
     render () {
         return (
-            <div>Alumni Page</div>
+            <Container className={classes.Container}>
+                <Title>Hi There</Title>
+                <Alumni team={this.state.ALUMNI} />
+
+            </Container>
         ); 
     }
 }

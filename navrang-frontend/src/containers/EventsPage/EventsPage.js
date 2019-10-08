@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import classes from './EventsPage.css';
 import Container from './../../components/UI/LandingPageContainer/LandingPageContainer';
 import Title from './../../components/UI/Title/Title';
-import Events from './Events/Events';
+import Events from '../../components/Events/Events';
 
 import { EVENTS } from './../../data/data';
 
