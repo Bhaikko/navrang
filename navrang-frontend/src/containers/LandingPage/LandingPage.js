@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import GroupImage from './../../components/GroupImage/GroupImage';
 import Achievements from './../../components/Achievements/Achievements';
@@ -33,13 +34,18 @@ class LandingPage extends Component {
                 <Container>
                     <Title >Achievements</Title>
                     <Achievements achievements={this.state.ACHIEVEMENTS} />
-                    <Button>View All Achievements</Button>
+                    <Link to="/achievements" style={{textDecoration: "none"}}>
+                        <Button>View All Achievements</Button>
+
+                    </Link>
                 </Container>
 
                 <Container>
                     <Title >Alumni</Title>
                     <Alumni team={this.state.ALUMNI} />
-                    <Button>Meet The Team</Button>
+                    <Link to="/alumni" style={{textDecoration: "none"}}>
+                        <Button>Meet The Team</Button>
+                    </Link>
                 </Container>
 
                 <AboutUs id="aboutUs" />

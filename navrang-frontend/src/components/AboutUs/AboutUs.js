@@ -2,8 +2,8 @@ import React from 'react';
 
 import classes from './AboutUs.css';
 
-import Title from './../UI/Title/Title';
-import Container from './../UI/SectionContainer/Container';
+import Title from '../UI/Title/Title';
+import Container from '../UI/SectionContainer/Container';
 
 const aboutUs = (props) => {
     return (

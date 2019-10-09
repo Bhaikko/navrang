@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './ContactDetail.css';
 
-import Title from './../UI/Title/Title';
+import Title from '../UI/Title/Title';
 import IconLink from './../IconLink/IconLink';
 
 const contactDetail = props => {
