@@ -4,7 +4,7 @@ import classes from './Achievements.css';
 import Achievement from './Achievement/Achievement';
 import Title from '../UI/Title/Title';
 import Button from '../UI/Button/Button';
-import Container from '../UI/LandingPageContainer/LandingPageContainer';
+import Container from '../UI/SectionContainer/Container';
 
 
 import { ACHIEVEMENTS } from '../../data/data';

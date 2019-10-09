@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './AlumniPage.css';
 
-import Container from './../../components/UI/LandingPageContainer/LandingPageContainer';
+import Container from './../../components/UI/SectionContainer/Container';
 import Title from './../../components/UI/Title/Title';
 import Alumni from '../../components/Alumni/Alumni';
 

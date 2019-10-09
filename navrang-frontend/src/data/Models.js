@@ -34,11 +34,13 @@ export class Event {
 }
 
 export class Notice {
-    constructor (id, title, content, date, files) {
+    constructor (id, title, content, date, files, name, designation) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.date = date;
         this.files = files;
+        this.name = name;
+        this.designation = designation;
     }
 }

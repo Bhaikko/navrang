@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './LandingPageContainer.css';
+import classes from './Container.css';
 
 const container = (props) => {
 

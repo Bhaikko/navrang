@@ -10,8 +10,9 @@ const Notices = props => {
                 key={notice.id}
                 title={notice.title}
                 date={notice.date}
+                showModal={props.showModal}
+                id={notice.id}
             />)}
-            
         </div>
     );
 

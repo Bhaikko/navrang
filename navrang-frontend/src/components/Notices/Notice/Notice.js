@@ -10,7 +10,7 @@ const Notice = props => {
         <div className={classes.Notice}>
             <Title>{props.title}</Title>
             <div className={classes.Date} >{props.date}</div>
-            <Button>View</Button>
+            <Button onClick={() => props.showModal(props.id)}>View</Button>
         </div>
     );
 

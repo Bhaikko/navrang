@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import classes from './EventsPage.css';
-import Container from './../../components/UI/LandingPageContainer/LandingPageContainer';
+import Container from './../../components/UI/SectionContainer/Container';
 import Title from './../../components/UI/Title/Title';
 import Events from '../../components/Events/Events';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './ContactUs.css';
 
 import ContactDetail from '../ContactDetail/ContactDetail';
-import Container from './../UI/LandingPageContainer/LandingPageContainer';
+import Container from './../UI/SectionContainer/Container';
 import Title from './../UI/Title/Title';
 import ContactForm from './../../containers/LandingPage/ContactForm/ContactForm';
 

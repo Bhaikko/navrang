@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './AchievementsPage.css';
 import Achievements from './../../components/Achievements/Achievements';
-import Container from './../../components/UI/LandingPageContainer/LandingPageContainer';
+import Container from './../../components/UI/SectionContainer/Container';
 import Title from './../../components/UI/Title/Title';
 
 import { ACHIEVEMENTS } from './../../data/data';

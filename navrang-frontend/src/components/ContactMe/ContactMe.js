@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './ContactMe.css';
 
-import Container from './../UI/LandingPageContainer/LandingPageContainer';
+import Container from './../UI/SectionContainer/Container';
 import IconLink from './../IconLink/IconLink';
 
 const contactMe = (props) => {

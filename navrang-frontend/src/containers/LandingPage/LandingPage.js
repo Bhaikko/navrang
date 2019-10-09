@@ -7,7 +7,7 @@ import AboutUs from './../../components/AboutUs/AboutUs';
 import ContactUs from './../../components/ContactUs/ContactUs';
 import ContactMe from './../../components/ContactMe/ContactMe';
 
-import Container from './../../components/UI/LandingPageContainer/LandingPageContainer';
+import Container from './../../components/UI/SectionContainer/Container';
 import Title from './../../components/UI/Title/Title';
 import Button from './../../components/UI/Button/Button';
 
