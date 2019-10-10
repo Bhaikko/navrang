@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 
+import AdminPage from './containers/AdminPage/AdminPage';
+import Layout from './hoc/Layout/Layout';
+
 class App extends Component {
   render () {
     return (
       <div>
-          <h1>Its working</h1>
+        <Layout admin >
+          <AdminPage />
+
+        </Layout>
       </div>
     ); 
   }
