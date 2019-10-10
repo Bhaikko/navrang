@@ -1,4 +1,4 @@
-const { Achievements, Issues, Events, Team, Notices } = require("./database");
+const { Achievements, Issues, Events, Team, Notices, Contacts } = require("./database");
 
 const { databaseParser } = require("./utility");
 
@@ -24,6 +24,16 @@ const addAchievment = (title, subtitle, content, date, imageUrl) => {
         .catch(console.log);
 }
 
+const deleteAchievement = (id) => {
+    return Achievements.destroy({
+        where: {
+            id
+        }
+    })
+        .then(response => response)
+        .catch(console.log);
+}
+
 const getIssues = () => {
     return Issues.findAll({
         order: [
@@ -43,6 +53,16 @@ const addIssue = (senderName, senderEmail, content, date) => {
         viewed  
     })
         .then(issue => issue)
+        .catch(console.log);
+}
+
+const deleteIssue = (id) => {
+    return Issues.destroy({
+        where: {
+            id 
+        }
+    })
+        .then(response => response)
         .catch(console.log);
 }
 
@@ -68,6 +88,16 @@ const addEvent = (lastDate, registrationLink, imageLink, info) => {
         .catch(console.log);
 }
 
+const deleteEvent = (id) => {
+    return Events.destroy({
+        where: {
+            id 
+        }
+    })
+        .then(response => response)
+        .catch(console.log);
+}
+
 const getTeam = () => {
     return Team.findAll()
         .then(team => databaseParser(team))
@@ -83,6 +113,16 @@ const addTeam = (name, designation, about, contactLink, imageLink) => {
         imageLink
     })
         .then(team => team)
+        .catch(console.log);
+}
+
+const deleteTeam = (id) => {
+    return Team.destroy({
+        where: {
+            id 
+        }
+    })
+        .then(response => response)
         .catch(console.log);
 }
 
@@ -109,15 +149,64 @@ const addNotice = (title, content, name, designation, date, fileLink) => {
         .catch(console.log);
 }
 
+const deleteNotice = (id) => {
+    return Notices.destroy({
+        where: {
+            id 
+        }
+    })
+        .then(response => response)
+        .catch(console.log);
+}
+
+const getContacts = () => {
+    return Contacts.findAll({
+        order: [
+            ["name", "ASC"]
+        ]
+    })
+        .then(contacts => databaseParser(contacts))
+        .catch(console.log);
+}
+
+const addContact = (name, phone, email) => {
+    return Contacts.create({
+        name,
+        phone,
+        email  
+    })
+        .then(contacts => contacts)
+        .catch(console.log);
+}
+
+const deleteContact = (id) => {
+    return Contacts.destroy({
+        where: {
+            id 
+        }
+    })
+        .then(response => response)
+        .catch(console.log);
+}
+
+
 module.exports = {
     addAchievment,
     addEvent,
     addIssue,
     addNotice,
     addTeam,
+    addContact,
     getAchievements,
     getEvents,
     getIssues,
     getNotices,
-    getTeam
+    getTeam,
+    getContacts,
+    deleteAchievement,
+    deleteContact,
+    deleteEvent,
+    deleteIssue,
+    deleteNotice,
+    deleteTeam
 }

@@ -138,6 +138,19 @@ const Notices = database.define("notices", {
     fileLink: {
         type: Sequelize.STRING,
     },
+});index
+
+const Contacts = database.define("contacts", {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false 
+    },
+    phone: {
+        type: Sequelize.STRING,
+    },
+    email: {
+        type: Sequelize.STRING 
+    }
 });
 
 module.exports = {
@@ -147,5 +160,6 @@ module.exports = {
     Achievements,
     Events,
     Team,
-    Notices
+    Notices,
+    Contacts
 }

@@ -4,15 +4,23 @@ module.exports = {
 } = require("./authHandler");
 
 module.exports = {
-    getAchievements,
     addAchievment,
-    getIssues,
-    addIssue,
-    getEvents,
     addEvent,
-    getTeam,
+    addIssue,
+    addNotice,
     addTeam,
+    addContact,
+    getAchievements,
+    getEvents,
+    getIssues,
     getNotices,
-    addNotice
-} = require("./navrangHandler");
+    getTeam,
+    getContacts,
+    deleteAchievement,
+    deleteContact,
+    deleteEvent,
+    deleteIssue,
+    deleteNotice,
+    deleteTeam
+} = require("./databaseHandler");
 
