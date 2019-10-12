@@ -18,6 +18,12 @@ router.post("/achievements", upload.single("image"), (req, res, next) => {
         .catch(err => res.sendStatus(400));
 });
 
+router.delete("/achievements", (req, res, next) => {
+    databaseHandler.deleteAchievement(req.body.id)
+        .then(response => res.send(200))
+        .catch(err => res.send(400));
+});
+
 router.post("/issues", (req, res, next) => {
     databaseHandler.addIssue(
         req.body.senderName,
@@ -27,6 +33,12 @@ router.post("/issues", (req, res, next) => {
     )
         .then(response => res.send(200))
         .catch(err => res.sendStatus(400));
+});
+
+router.delete("/issues", (req, res, next) => {
+    databaseHandler.deleteIssue(req.body.id)
+        .then(response => res.send(200))
+        .catch(err => res.send(400));
 });
 
 router.post("/events", upload.single("image"), (req, res, next) => {
@@ -39,6 +51,13 @@ router.post("/events", upload.single("image"), (req, res, next) => {
         .then(response => res.send(200))
         .catch(err => res.sendStatus(400));
 });
+
+router.delete("/events", (req, res, next) => {
+    databaseHandler.deleteEvent(req.body.id)
+        .then(response => res.send(200))
+        .catch(err => res.send(400));
+});
+
 router.post("/team", upload.single("image"), (req, res, next) => {
     databaseHandler.addTeam(
         req.body.name,
@@ -50,6 +69,13 @@ router.post("/team", upload.single("image"), (req, res, next) => {
         .then(response => res.send(200))
         .catch(err => res.sendStatus(400));
 });
+
+router.delete("/team", (req, res, next) => {
+    databaseHandler.deleteTeam(req.body.id)
+        .then(response => res.send(200))
+        .catch(err => res.send(400));
+});
+
 router.post("/notices", (req, res, next) => {
     databaseHandler.addNotice(
         req.body.title, 
@@ -61,6 +87,12 @@ router.post("/notices", (req, res, next) => {
     )
         .then(response => res.send(200))
         .catch(err => res.sendStatus(400));
+});
+
+router.delete("/notices", (req, res, next) => {
+    databaseHandler.deleteNotice(req.body.id)
+        .then(response => res.send(200))
+        .catch(err => res.send(400));
 });
 
 module.exports = {
