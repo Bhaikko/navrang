@@ -4,7 +4,7 @@ import Aux from './../Aux/Aux';
 import Toolbar from './../../components/Navigation/Toolbar/Toolbar';
 import AdminToolbar from './../../components/AdminComponents/AdminNavigation/AdminToolbar/AdminToolbar';
 
-// import classes from './Layout.css';
+import classes from './Layout.css';
 
 class Layout extends Component {
     
@@ -20,7 +20,7 @@ class Layout extends Component {
         }
         return (
             <Aux>
-                <ToolbarComponent />
+                <ToolbarComponent className={this.props.admin ? classes.Content : null} />
                 <main>
                     {this.props.children}
                 </main>

@@ -1,0 +1,18 @@
+.ListItem {
+    display: flex;
+    border: 2px dashed black;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 90%;
+    margin-left: 2.5%;
+    padding: 10px;
+}
+
+.Title {
+    flex: 1;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 30px;
+}

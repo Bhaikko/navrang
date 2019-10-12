@@ -4,7 +4,7 @@ import classes from './Button.css';
 
 const button = props => {
     return (
-        <div className={classes.ButtonContainer} >
+        <div className={props.inline ?  classes.ButtonContainerInline : classes.ButtonContainer } >
             <button 
                 disabled={props.disabled}
                 {...props} 

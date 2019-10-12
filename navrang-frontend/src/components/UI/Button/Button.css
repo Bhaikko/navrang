@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.ButtonContainerInline {
+    display: inline-block;
+    
+}
+
 .Button {
     background: #76B3FA;
     border-radius: 100px;

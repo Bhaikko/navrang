@@ -50,6 +50,10 @@ const Issues = database.define("issues", {
 });
 
 const Events = database.define("events", {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false 
+    },
     lastDate: {
         type: Sequelize.DATE,
         allowNull: false,
