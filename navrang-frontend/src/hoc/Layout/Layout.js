@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Aux from './../Aux/Aux';
 import Toolbar from './../../components/Navigation/Toolbar/Toolbar';
-import AdminToolbar from './../../components/AdminComponents/AdminToolbar/AdminToolbar';
+import AdminToolbar from './../../components/AdminComponents/AdminNavigation/AdminToolbar/AdminToolbar';
 
 // import classes from './Layout.css';
 

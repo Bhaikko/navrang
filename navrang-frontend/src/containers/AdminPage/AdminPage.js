@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-
-import classes from './AdminPage.css';
+// import classes from './AdminPage.css';
 
 class AdminPage extends Component {
 
-    constructor (props) {
-        super(props);
-        this.state = {
-            currentSettings: "achievements",
-        }
-    }
+    // constructor (props) {
+    //     super(props);
+    //     this.state = {
+    //         currentSettings: "achievements",
+    //     }
+    // }
 
     render () {
+        console.log(this.props.currentSetting);
         return (
-            <div>Hello World</div>
+            <div>.</div>
         );
     }
 }
 
-export default AdminPage;
+const mapStateToProps = state => {
+    return {
+        currentSetting: state.dashboard.setting 
+    }
+}
+
+export default connect(mapStateToProps, null)(AdminPage);

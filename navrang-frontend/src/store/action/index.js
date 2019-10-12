@@ -1,0 +1,4 @@
+export {
+    changeSettings
+} from './dashboard';
+

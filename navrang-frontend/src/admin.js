@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { BrowserRouter } from 'react-router-dom';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import './index.css';
 import AdminApp from './AdminApp';
+
+import dashboardReducer from './store/reducer/dashboard';
+
 import * as serviceWorker from './serviceWorker';
 
+const rootReducer = combineReducers({
+    dashboard: dashboardReducer 
+});
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
 const app = (
-    <AdminApp />
+    <Provider store={store}>
+        <AdminApp />
+    </Provider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

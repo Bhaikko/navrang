@@ -9,7 +9,6 @@ class App extends Component {
       <div>
         <Layout admin >
           <AdminPage />
-
         </Layout>
       </div>
     ); 
