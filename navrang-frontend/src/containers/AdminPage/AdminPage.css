@@ -36,4 +36,5 @@
 
 .Form {
     overflow: auto;
+    max-height: 80%;
 }

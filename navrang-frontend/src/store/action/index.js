@@ -1,4 +1,9 @@
 export {
-    changeSettings
+    getAchievements,
+    getContacts, 
+    getEvents,
+    getIssues,
+    getNotices,
+    getTeam
 } from './dashboard';
 

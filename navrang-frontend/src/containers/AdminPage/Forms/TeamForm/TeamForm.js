@@ -80,7 +80,7 @@ class TeamForm extends Component {
 
     render () {
         return (
-            <Form formConfig={this.state.formConfig} formName="New Achievement" />
+            <Form formConfig={this.state.formConfig} formName="New Team Member" />
         );
     }
 }

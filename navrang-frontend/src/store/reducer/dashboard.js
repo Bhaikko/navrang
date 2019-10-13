@@ -1,18 +1,35 @@
 import * as actionTypes from '../action/actionTypes';
-import * as data from './../../data/data';
 
 const initialState = {
-    setting: "events",
-    data: data["EVENTS"],
+    setting: null,
+    data: null,
+    loading: false,
+    error: false,
 }
 
 const reducer = (state = initialState, action) => {
     
     switch (action.type) {
-        case actionTypes.CHANGE_SETTING:
+        case actionTypes.CHANGE_DATA_BEGIN:
             return {
+                ...state,
+                loading: true,
+                error: false
+            }
+        
+        case actionTypes.CHANGE_DATA:
+            return {
+                ...state,
                 setting: action.setting,
-                data: data[action.setting.toUpperCase()]
+                data: action.data,
+                loading: false,
+                error: false
+            }
+        
+        case actionTypes.CHANGE_DATA_FAILED:
+            return {
+                ...state,
+                error: true
             }
 
         default: 

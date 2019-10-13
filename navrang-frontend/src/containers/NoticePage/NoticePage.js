@@ -8,6 +8,7 @@ import Notices from './../../components/Notices/Notices';
 import Modal from './../../components/UI/Modal/Modal';
 
 import { NOTICES } from './../../data/data';
+import NoticeCard from './../../components/Notices/NoticeCard/NoticeCard';
 
 class NoticePage extends Component {
 
@@ -22,20 +23,14 @@ class NoticePage extends Component {
     showModal = (id) => {
         const currentNotice = NOTICES.find(notice => notice.id === id);
         const newModalContent = (
-            <div>
-                <Title>Notice</Title>
-                <div className={classes.Date}>{currentNotice.date}</div>
-                <Title>{currentNotice.title}</Title>
-                <div className={classes.Content}>{currentNotice.content}</div>
-                <div className={classes.Name}>{currentNotice.name},</div>
-                <div className={classes.Designation}>{currentNotice.designation}</div>
-                <hr />
-                <div className={classes.Files}>
-                    <a  target="_blank" href={currentNotice.files} rel="noopener noreferrer" >
-                        Attached Files
-                    </a>
-                </div>
-            </div>
+            <NoticeCard
+                date={currentNotice.date}
+                title={currentNotice.title}
+                content={currentNotice.content}
+                name={currentNotice.name}
+                designation={currentNotice.designation}
+                files={currentNotice.files}
+            />
         )
         this.setState({
             modalContent: newModalContent 

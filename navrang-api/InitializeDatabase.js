@@ -103,7 +103,42 @@ const EVENTS = [
         registrationLink: "https://forms.gle/9sHDvwqW4yndm6zq9",
         imageLink: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/event-poster-template-e6771eeb0763814b21d0144eb8e91bdb.jpg?ts=1561498807",
         info: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book., remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    }    
+    },    
+    {
+        name: "Event",
+        lastDate: new Date(),
+        registrationLink: "https://forms.gle/9sHDvwqW4yndm6zq9",
+        imageLink: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/event-poster-template-e6771eeb0763814b21d0144eb8e91bdb.jpg?ts=1561498807",
+        info: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book., remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },    
+    {
+        name: "Event",
+        lastDate: new Date(),
+        registrationLink: "https://forms.gle/9sHDvwqW4yndm6zq9",
+        imageLink: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/event-poster-template-e6771eeb0763814b21d0144eb8e91bdb.jpg?ts=1561498807",
+        info: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book., remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },    
+    {
+        name: "Event",
+        lastDate: new Date(),
+        registrationLink: "https://forms.gle/9sHDvwqW4yndm6zq9",
+        imageLink: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/event-poster-template-e6771eeb0763814b21d0144eb8e91bdb.jpg?ts=1561498807",
+        info: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book., remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },    
+    {
+        name: "Event",
+        lastDate: new Date(),
+        registrationLink: "https://forms.gle/9sHDvwqW4yndm6zq9",
+        imageLink: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/event-poster-template-e6771eeb0763814b21d0144eb8e91bdb.jpg?ts=1561498807",
+        info: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book., remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },    
+    {
+        name: "Event",
+        lastDate: new Date(),
+        registrationLink: "https://forms.gle/9sHDvwqW4yndm6zq9",
+        imageLink: "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/event-poster-template-e6771eeb0763814b21d0144eb8e91bdb.jpg?ts=1561498807",
+        info: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book., remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    },    
 ]
 
 const NOTICES = [

@@ -31,11 +31,15 @@ router.get("/team", (req, res, next) => {
         .catch(err => res.sendStatus(400));
 });
 
-
-
 router.get("/notices", (req, res, next) => {
     databaseHandler.getNotices()
         .then(notices => res.send(notices))
+        .catch(err => res.sendStatus(400));
+});
+
+router.get("/contacts", (req, res, next) => {
+    databaseHandler.getContacts()
+        .then(contacts => res.send(contacts))
         .catch(err => res.sendStatus(400));
 });
 

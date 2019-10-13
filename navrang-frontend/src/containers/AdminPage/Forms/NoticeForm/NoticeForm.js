@@ -94,7 +94,7 @@ class NoticeForm extends Component {
 
     render () {
         return (
-            <Form formConfig={this.state.formConfig} formName="New Achievement" />
+            <Form formConfig={this.state.formConfig} formName="New Notice" />
         );
     }
 }

@@ -34,7 +34,7 @@ class ContactForm extends Component {
                     touched: false
                 },
                 phone: {
-                    elementType: "textarea",
+                    elementType: "input",
                     elementConfig: {
                         placeholder: "Phone"
                     },

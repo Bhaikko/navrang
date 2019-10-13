@@ -4,12 +4,41 @@ import { connect } from 'react-redux';
 import classes from './AdminNavigationItems.css';
 
 import AdminNavigationItem from './AdminNavigationItem/AdminNavigationItem';
-import * as actions from './../../../../store/action/index';
+import * as dashboardActions from './../../../../store/action/index';
 
 class AdminNavigationItems extends Component {
+
+    constructor (props) {
+        super(props);
+        this.props.onGetEvents();
+    }
     
     clickHandler = event => {
-        this.props.onChangeSetting(event.target.innerText.toLowerCase());
+        const currentSetting = event.target.innerText;
+        // this.props.onChangeSetting(event.target.innerText.toLowerCase());
+
+        switch (currentSetting) {
+            case "Achievements":
+                this.props.onGetAchievements();
+                break;
+            case "Events":
+                this.props.onGetEvents();
+                break;
+            case "Contacts":
+                this.props.onGetContacts();
+                break;
+            case "Team":
+                this.props.onGetTeam();
+                break;
+            case "Notices":
+                this.props.onGetNotices();
+                break;
+            case "Issues":
+                this.props.onGetIssues();
+                break;
+            default: 
+                break;
+        }
     }
 
     render () {
@@ -21,7 +50,7 @@ class AdminNavigationItems extends Component {
                 <AdminNavigationItem onClick={this.clickHandler} selected={this.props.currentSetting === "contacts" ? true : false } >Contacts</AdminNavigationItem>
                 <AdminNavigationItem onClick={this.clickHandler} selected={this.props.currentSetting === "notices" ? true : false } >Notices</AdminNavigationItem>
                 <AdminNavigationItem onClick={this.clickHandler} selected={this.props.currentSetting === "issues" ? true : false } >Issues</AdminNavigationItem>
-                <AdminNavigationItem onClick={this.clickHandler} >Logout</AdminNavigationItem>
+                <AdminNavigationItem  >Logout</AdminNavigationItem>
             </ul>
         );
     }
@@ -35,7 +64,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onChangeSetting: setting => dispatch(actions.changeSettings(setting)),
+        onGetAchievements: () => dispatch(dashboardActions.getAchievements()),
+        onGetContacts: () => dispatch(dashboardActions.getContacts()),
+        onGetEvents: () => dispatch(dashboardActions.getEvents()),
+        onGetIssues: () => dispatch(dashboardActions.getIssues()),
+        onGetNotices: () => dispatch(dashboardActions.getNotices()),
+        onGetTeam: () => dispatch(dashboardActions.getTeam()),
     }
 }
 
