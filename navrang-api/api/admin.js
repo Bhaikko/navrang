@@ -4,7 +4,7 @@ const multer = require("multer");
 const databaseHandler = require("../database"); 
 
 const router = express.Router();
-const upload = multer({ dest: "./../uploads" });
+const upload = multer({ dest: './uploads' });
 
 router.post("/achievements", upload.single("files"), (req, res, next) => {
     databaseHandler.addAchievment(
