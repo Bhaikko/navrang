@@ -8,11 +8,13 @@ import './index.css';
 import AdminApp from './AdminApp';
 
 import dashboardReducer from './store/reducer/dashboard';
+import formReducer from './store/reducer/form';
 
 import * as serviceWorker from './serviceWorker';
 
 const rootReducer = combineReducers({
-    dashboard: dashboardReducer 
+    dashboard: dashboardReducer,
+    form: formReducer 
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

@@ -5,6 +5,9 @@ const initialState = {
     data: null,
     loading: false,
     error: false,
+    bAdding: false,
+    currentPreview: null,
+    currentForm: null 
 }
 
 const reducer = (state = initialState, action) => {
@@ -14,7 +17,10 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
-                error: false
+                error: false,
+                currentPreview: false,
+                currentForm: false,
+                bAdding: false 
             }
         
         case actionTypes.CHANGE_DATA:
@@ -23,13 +29,32 @@ const reducer = (state = initialState, action) => {
                 setting: action.setting,
                 data: action.data,
                 loading: false,
-                error: false
+                error: false,
+                bAdding: false,
+                currentPreview: null,
+                currentForm: action.currentForm
             }
         
         case actionTypes.CHANGE_DATA_FAILED:
             return {
                 ...state,
-                error: true
+                error: true,
+                loading: false,
+                bAdding: false,
+                currentPreview: null,
+                currentForm: null
+            }
+
+        case actionTypes.TOGGLE_FORM:
+            return {
+                ...state,
+                bAdding: action.isAdding
+            }
+
+        case actionTypes.CHANGE_PREVIEW:
+            return {
+                ...state,
+                currentPreview: action.currentPreview
             }
 
         default: 

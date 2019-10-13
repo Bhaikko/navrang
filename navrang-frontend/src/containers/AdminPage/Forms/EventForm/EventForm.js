@@ -34,7 +34,7 @@ class EventForm extends Component {
                     valid: false,
                     touched: false 
                 },
-                resgistration: {
+                registrationLink: {
                     elementType: "input",
                     elementConfig: {
                         placeholder: "Google Form Link"
@@ -46,11 +46,11 @@ class EventForm extends Component {
                     valid: false,
                     touched: false 
                 },
-                image: {
+                file: {
                     elementType: "file",
                     elementConfig: {
                         type: "file",
-                        accept: "image/*",
+                        // accept: "image/*",
                         uploadinfo: "Image Related To Event"
                     },
                     value: "",
@@ -80,7 +80,7 @@ class EventForm extends Component {
 
     render () {
         return (
-            <Form formConfig={this.state.formConfig} formName="New Event" />
+            <Form formConfig={this.state.formConfig} formName="New Event" url="/admin/events" />
         );
     }
 }

@@ -10,7 +10,6 @@ const input = (props) => {
     const fileHandler = event => {
         event.preventDefault();
         event.target.parentNode.previousSibling.children[0].click();
-        // event.target.previousSibling.children[0].click();
     }
 
     if(
@@ -57,7 +56,8 @@ const input = (props) => {
                             className={inputClasses.join(" ")}
                             {...props.elementConfig}
                             value={props.value}
-                            onChange={props.changed} />
+                            onChange={props.changed}
+                        />
                     </div>
                     <Button style={{fontSize: "10px"}} onClick={fileHandler}>{props.elementConfig.uploadinfo}</Button>
                 </div>

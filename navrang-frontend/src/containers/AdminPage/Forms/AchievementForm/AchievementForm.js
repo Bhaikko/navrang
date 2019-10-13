@@ -59,7 +59,7 @@ class AchievementForm extends Component {
                     valid: false,
                     touched: false 
                 },
-                image: {
+                file: {
                     elementType: "file",
                     elementConfig: {
                         type: "file",
@@ -81,7 +81,7 @@ class AchievementForm extends Component {
 
     render () {
         return (
-            <Form formConfig={this.state.formConfig} formName="New Achievement" />
+            <Form formConfig={this.state.formConfig} formName="New Achievement" url="/admin/achievements" />
         );
     }
 }

@@ -76,12 +76,12 @@ const getEvents = () => {
         .catch(console.log);
 }
 
-const addEvent = (lastDate, registrationLink, imageLink, info) => {
+const addEvent = (name, lastDate, registrationLink, imageLink, info) => {
     return Events.create({
+        name,
         lastDate,
         registrationLink,
         imageLink,
-        imageUrl,
         info
     })
         .then(event => event)

@@ -77,7 +77,7 @@ class NoticeForm extends Component {
                     elementConfig: {
                         type: "file",
                         accept: "image/*, .pdf, .doc",
-                        uploadinfo: "Image Related To Achievement"
+                        uploadinfo: "File Related To Notice"
                     },
                     value: "",
                     validation: {
@@ -94,7 +94,7 @@ class NoticeForm extends Component {
 
     render () {
         return (
-            <Form formConfig={this.state.formConfig} formName="New Notice" />
+            <Form formConfig={this.state.formConfig} formName="New Notice" url="/admin/notices"  />
         );
     }
 }

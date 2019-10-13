@@ -58,12 +58,12 @@ class TeamForm extends Component {
                     valid: false,
                     touched: false
                 },
-                image: {
+                file: {
                     elementType: "file",
                     elementConfig: {
                         type: "file",
-                        accept: "image/*",
-                        uploadinfo: "Member Photo"
+                        // accept: "image/*",
+                        uploadinfo: "Member Photo",
                     },
                     value: "",
                     validation: {
@@ -80,7 +80,7 @@ class TeamForm extends Component {
 
     render () {
         return (
-            <Form formConfig={this.state.formConfig} formName="New Team Member" />
+            <Form formConfig={this.state.formConfig} formName="New Team Member" url="/admin/team"  />
         );
     }
 }

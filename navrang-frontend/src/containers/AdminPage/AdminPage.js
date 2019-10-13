@@ -15,176 +15,96 @@ import NoticeCard from './../../components/Notices/NoticeCard/NoticeCard';
 import ContactCard from './../../components/ContactCard/ContactCard';
 import IssueCard from './../../components/Issue/Issue';
 
-import AchievementForm from './Forms/AchievementForm/AchievementForm';
-import ContactForm from './Forms/ContactForm/ContactForm';
-import EventForm from './Forms/EventForm/EventForm';
-import NoticeForm from './Forms/NoticeForm/NoticeForm';
-import TeamForm from './Forms/TeamForm/TeamForm';
+// import AchievementForm from './Forms/AchievementForm/AchievementForm';
+// import ContactForm from './Forms/ContactForm/ContactForm';
+// import EventForm from './Forms/EventForm/EventForm';
+// import NoticeForm from './Forms/NoticeForm/NoticeForm';
+// import TeamForm from './Forms/TeamForm/TeamForm';
 
+import * as dashboardActions from './../../store/action/index';
 
 class AdminPage extends Component {
 
-    constructor (props) {
-        super(props);
-        this.state = {
-            bAdding: false,
-            currentPreview: null,
-            currentForm: null,
-        }
-    }
-
-    resetHandler = () => {
-        this.setState({
-            bAdding: false,
-            currentPreview: null,
-            currentForm: false 
-        });
-    }
-
     selectedDataHandler = (index) => {
-        console.log(this.props.data[index]);
+        let currentPreview;
         switch (this.props.currentSetting) {
             case "events": 
-                this.setState({
-                    currentPreview: (<EventCard 
-                        imageUrl={this.props.data[index].imageLink}
-                        link={this.props.data[index].registrationLink}
-                        info={this.props.data[index].info}
-                        date={this.props.data[index].lastDate.toString()}
-                    />), 
-                });
+                currentPreview =  (<EventCard 
+                    imageUrl={this.props.data[index].imageLink}
+                    link={this.props.data[index].registrationLink}
+                    info={this.props.data[index].info}
+                    date={this.props.data[index].lastDate}
+                />);
+                this.props.onChangePreview(currentPreview);
                 break;
             case "achievements": 
-                this.setState({
-                    currentPreview: (<AchievementCard 
-                        imageUrl={this.props.data[index].imageUrl}
-                        title={this.props.data[index].link}
-                        subtitle={this.props.data[index].subtitle}
-                        date={this.props.data[index].date}
-                        description={this.props.data[index].content}
-                    />),
-                });
-
+            
+                currentPreview = (<AchievementCard 
+                    imageUrl={this.props.data[index].imageUrl}
+                    title={this.props.data[index].link}
+                    subtitle={this.props.data[index].subtitle}
+                    date={this.props.data[index].date}
+                    description={this.props.data[index].content}
+                />);
+                this.props.onChangePreview(currentPreview);
                 break;
             case "team": 
-                this.setState({
-                    currentPreview: (<TeamCard 
-                        imageUrl={this.props.data[index].imageLink}
-                        about={this.props.data[index].about}
-                        name={this.props.data[index].name}
-                        designation={this.props.data[index].designation}
-                        contact={this.props.data[index].contactLink}
-                    />),   
-                });
+                currentPreview = (<TeamCard 
+                    imageUrl={this.props.data[index].imageLink}
+                    about={this.props.data[index].about}
+                    name={this.props.data[index].name}
+                    designation={this.props.data[index].designation}
+                    contact={this.props.data[index].contactLink}
+                />);
+                this.props.onChangePreview(currentPreview);   
                 break;
             case "contacts": 
-                this.setState({
-                    currentPreview: (<ContactCard 
-                        name={this.props.data[index].name}
-                        email={this.props.data[index].email}
-                        phone={this.props.data[index].phone}
-                    />),   
-                });
+                currentPreview = (<ContactCard 
+                    name={this.props.data[index].name}
+                    email={this.props.data[index].email}
+                    phone={this.props.data[index].phone}
+                />);
+                this.props.onChangePreview(currentPreview); 
+                
                 break;
-            case "notices": 
-                this.setState({
-                    currentPreview: (<NoticeCard 
-                        title={this.props.data[index].title}
-                        date={this.props.data[index].date}
-                        content={this.props.data[index].content}
-                        name={this.props.data[index].name}
-                        designation={this.props.data[index].designation}
-                        files={this.props.data[index].fileLink}
-                    />),   
-                });
+            case "notices":         
+                currentPreview = (<NoticeCard 
+                    title={this.props.data[index].title}
+                    date={this.props.data[index].date}
+                    content={this.props.data[index].content}
+                    name={this.props.data[index].name}
+                    designation={this.props.data[index].designation}
+                    files={this.props.data[index].fileLink}
+                />);
+                this.props.onChangePreview(currentPreview);   
+            
                 break;
 
             case "issues":
-                this.setState({
-                    currentPreview: (<IssueCard
-                        content={this.props.data[index].content}
-                        name={this.props.data[index].senderName}
-                        email={this.props.data[index].senderEmail}
-                        date={this.props.data[index].date}
-                    />),   
-                });
+                
+                currentPreview = (<IssueCard
+                    content={this.props.data[index].content}
+                    name={this.props.data[index].senderName}
+                    email={this.props.data[index].senderEmail}
+                    date={this.props.data[index].date}
+                />);
+                this.props.onChangePreview(currentPreview);
+                
                 break;
 
             default:
-                this.setState({
-                    currentPreview: null 
-                });
                 break;
 
         }
-    }
-
-    deleteHandler = (id) => {
-        // const currentData = this.state.data;
-        // const updatedData = currentData.filter(current => current.id !== id);
-        // if (this.state.selectedData.id === id) {
-        //     this.setState({
-        //         data: updatedData,
-        //         currentPreview: null
-        //     });
-        // } else {
-        //     this.setState({
-        //         data: updatedData,
-        //     });
-        // }
     }
 
     newFormHandler = () => {
-        switch (this.props.currentSetting) {
-            case "events": 
-                this.setState({
-                    currentForm: <EventForm />    
-                });
-                break;
-            case "achievements": 
-                this.setState({
-                    currentForm: <AchievementForm />    
-                });
-
-                break;
-            case "team": 
-                this.setState({
-                    currentForm: <TeamForm />    
-                });
-                break;
-            case "contacts": 
-                this.setState({
-                    currentForm: <ContactForm />    
-                });
-                break;
-            case "notices": 
-                this.setState({
-                    currentForm: <NoticeForm />    
-                });
-                break;
-
-            case "issues":
-                this.setState({
-                    currentForm: null    
-                });
-                break;
-
-            default:
-                this.setState({
-                    currentForm: null 
-                });
-                break;
-
-        }
-        this.setState(prevState => {
-            return {
-                bAdding: !prevState.bAdding
-            }
-        });
+        this.props.onToggleForm(this.props.bAdding);
     }
 
     render () {
         let content = <Spinner />
+
         if (!this.props.loading) {
             content = (
                 <div className={classes.Container}>
@@ -196,10 +116,10 @@ class AdminPage extends Component {
                         </div>
                         <hr />
                         {
-                            this.state.bAdding ?
+                            this.props.bAdding ?
                                 (
                                     <div className={classes.Form}>
-                                        {this.state.currentForm}
+                                        {this.props.formLoading ? <Spinner /> : this.props.currentForm}
                                     </div>
                                 ) : (
                                     <div className={classes.List}>
@@ -209,7 +129,6 @@ class AdminPage extends Component {
                                         />
                                     </div>
                                 ) 
-                            
                         }
 
                     </div>
@@ -218,10 +137,10 @@ class AdminPage extends Component {
                             <Title style={{display: "inline-block"}}>Preview</Title>
                             <hr />
                             <div className={classes.Preview}>
-                                {this.state.currentPreview ? 
+                                {this.props.currentPreview ? 
                                     (
                                         <div>
-                                            {this.state.currentPreview}
+                                            {this.props.currentPreview}
                                         </div>
                                     ) :
                                     (
@@ -249,8 +168,21 @@ const mapStateToProps = state => {
         currentSetting: state.dashboard.setting,
         data: state.dashboard.data,
         loading: state.dashboard.loading,
-        error: state.dashboard.error 
+        error: state.dashboard.error,
+        bAdding: state.dashboard.bAdding,
+        currentPreview: state.dashboard.currentPreview,
+        currentForm: state.dashboard.currentForm,
+        formLoading: state.form.loading,
+        formError: state.form.error,
+        formMessage: state.form.message
     }
 }
 
-export default connect(mapStateToProps, null)(AdminPage);
+const mapDispatchToProps = dispatch => {
+    return {
+        onToggleForm: (currentFormState) => dispatch(dashboardActions.toggleForm(currentFormState)),
+        onChangePreview: (currentPreview) => dispatch(dashboardActions.changePreview(currentPreview))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminPage);

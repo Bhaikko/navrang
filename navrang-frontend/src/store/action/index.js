@@ -4,6 +4,12 @@ export {
     getEvents,
     getIssues,
     getNotices,
-    getTeam
+    getTeam,
+    toggleForm,
+    changePreview
 } from './dashboard';
+
+export {
+    formSubmit
+} from './form'
 

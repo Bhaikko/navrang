@@ -1,7 +1,30 @@
+import React from 'react';
 import * as actionTypes from './actionTypes';
 import axios from '../../axios';
 
-export const getAchievements = (reset) => {
+import AchievementForm from './../../containers/AdminPage/Forms/AchievementForm/AchievementForm';
+import ContactForm from './../../containers/AdminPage/Forms/ContactForm/ContactForm';
+import EventForm from './../../containers/AdminPage/Forms/EventForm/EventForm';
+import NoticeForm from './../../containers/AdminPage/Forms/NoticeForm/NoticeForm';
+import TeamForm from './../../containers/AdminPage/Forms/TeamForm/TeamForm';
+
+
+export const toggleForm = (currentFormState) => {
+
+    return {
+        type: actionTypes.TOGGLE_FORM,
+        isAdding: !currentFormState
+    }
+}
+
+export const changePreview = (currentPreview) => {
+    return {
+        type: actionTypes.CHANGE_PREVIEW,
+        currentPreview: currentPreview
+    }
+}
+
+export const getAchievements = (data) => {
 
     return dispatch => {
         dispatch({
@@ -12,7 +35,8 @@ export const getAchievements = (reset) => {
             .then(response => dispatch({
                 type: actionTypes.CHANGE_DATA,
                 data: response.data,
-                setting: "achievements"  
+                setting: "achievements",
+                currentForm: (<AchievementForm />)
             }))
             .catch(err => dispatch({
                 type: actionTypes.CHANGE_DATA_FAILED,
@@ -22,7 +46,7 @@ export const getAchievements = (reset) => {
     }
 }
 
-export const getContacts = () => {
+export const getContacts = (data) => {
 
     return dispatch => {
         dispatch({
@@ -33,7 +57,8 @@ export const getContacts = () => {
             .then(response => dispatch({
                 type: actionTypes.CHANGE_DATA,
                 data: response.data,
-                setting: "contacts"  
+                setting: "contacts",
+                currentForm: <ContactForm />  
             }))
             .catch(err => dispatch({
                 type: actionTypes.CHANGE_DATA_FAILED,
@@ -43,7 +68,7 @@ export const getContacts = () => {
     }
 }
 
-export const getEvents = () => {
+export const getEvents = (data) => {
 
     return dispatch => {
         dispatch({
@@ -54,7 +79,8 @@ export const getEvents = () => {
             .then(response => dispatch({
                 type: actionTypes.CHANGE_DATA,
                 data: response.data,
-                setting: "events"  
+                setting: "events",
+                currentForm: <EventForm />  
             }))
             .catch(err => dispatch({
                 type: actionTypes.CHANGE_DATA_FAILED,
@@ -64,7 +90,7 @@ export const getEvents = () => {
     }
 }
 
-export const getIssues = () => {
+export const getIssues = (data) => {
 
     return dispatch => {
         dispatch({
@@ -75,7 +101,8 @@ export const getIssues = () => {
             .then(response => dispatch({
                 type: actionTypes.CHANGE_DATA,
                 data: response.data,
-                setting: "issues"  
+                setting: "issues",
+                currentForm: null  
             }))
             .catch(err => dispatch({
                 type: actionTypes.CHANGE_DATA_FAILED,
@@ -85,7 +112,7 @@ export const getIssues = () => {
     }
 }
 
-export const getNotices = () => {
+export const getNotices = (data) => {
 
     return dispatch => {
         dispatch({
@@ -96,7 +123,8 @@ export const getNotices = () => {
             .then(response => dispatch({
                 type: actionTypes.CHANGE_DATA,
                 data: response.data,
-                setting: "notices"  
+                setting: "notices",
+                currentForm: <NoticeForm />  
             }))
             .catch(err => dispatch({
                 type: actionTypes.CHANGE_DATA_FAILED,
@@ -106,7 +134,7 @@ export const getNotices = () => {
     }
 }
 
-export const getTeam = () => {
+export const getTeam = (data) => {
 
     return dispatch => {
         dispatch({
@@ -117,7 +145,8 @@ export const getTeam = () => {
             .then(response => dispatch({
                 type: actionTypes.CHANGE_DATA,
                 data: response.data,
-                setting: "team"  
+                setting: "team",
+                currentForm: <TeamForm />  
             }))
             .catch(err => dispatch({
                 type: actionTypes.CHANGE_DATA_FAILED,

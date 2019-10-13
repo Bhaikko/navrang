@@ -36,7 +36,8 @@ class ContactForm extends Component {
                 phone: {
                     elementType: "input",
                     elementConfig: {
-                        placeholder: "Phone"
+                        placeholder: "Phone",
+                        type: "number"
                     },
                     validation: {
                         isPhone: true
@@ -52,7 +53,7 @@ class ContactForm extends Component {
 
     render () {
         return (
-            <Form formConfig={this.state.formConfig} formName="New Contact" />
+            <Form formConfig={this.state.formConfig} formName="New Contact" url="/admin/contacts"  />
         );
     }
 }

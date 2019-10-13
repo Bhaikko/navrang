@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Input from './../../../components/UI/Input/Input';
 import Button from './../../../components/UI/Button/Button';
+
+import * as formActions from './../../../store/action/index'
 
 import classes from './Form.css';
 
@@ -9,7 +12,9 @@ class Form extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            form: this.props.formConfig
+            form: this.props.formConfig,
+            formIsValid: false,
+            file: null 
         }
     }
 
@@ -30,12 +35,11 @@ class Form extends Component {
         }
 
         if(rules.minLength) {
-            isValid = value.trim().length > rules.minLength
+            isValid = value.trim().length > rules.minLength && isValid
         }
 
         if(rules.isPhone) {
-            const pattern = /[^0-9]/;
-            isValid = value.trim().length === 10 && pattern.test(value.trim());
+            isValid = value.length === 10 && isValid
         }
 
         return isValid;
@@ -43,6 +47,18 @@ class Form extends Component {
 
     formSubmitHandler = (event) => {
         event.preventDefault();
+        const formData = {};
+
+        // eslint-disable-next-line
+        for(let formElementIdentifier in this.state.form) {
+            formData[formElementIdentifier] = this.state.form[formElementIdentifier].value;
+        }
+
+        if(this.state.file) {
+            formData.files = this.state.file[0];
+        }
+
+        this.props.onSubmit(formData, this.props.url);
     }
 
     inputChangeHandler = (event, inputIdentifier) => {
@@ -66,11 +82,18 @@ class Form extends Component {
             formIsValid = updatedform[inputIdentifier].valid && formIsValid;
         }
 
-
-        this.setState({
-            form: updatedform,
-            formIsValid: formIsValid 
-        });
+        if (inputIdentifier === "file") {
+            this.setState({
+                form: updatedform,
+                formIsValid: formIsValid,
+                file: event.target.files
+            });
+        } else {
+            this.setState({
+                form: updatedform,
+                formIsValid: formIsValid,
+            });
+        }
     }
 
     render () {
@@ -86,7 +109,7 @@ class Form extends Component {
 
         let form = (
 
-            <form onSubmit={this.contactHandler} style={{height: "100%"}}>
+            <form style={{height: "100%"}}>
                 {formElementsArray.map(formElement => (
                     <Input 
                         label={formElement.config.label}
@@ -99,7 +122,7 @@ class Form extends Component {
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched} />
                 ))}
-                <Button disabled={!this.state.formIsValid} >Send Us</Button>
+                <Button disabled={!this.state.formIsValid} onClick={this.formSubmitHandler} >Send Us</Button>
             </form>
         );
                     
@@ -112,4 +135,18 @@ class Form extends Component {
     }
 }
 
-export default Form;
+const mapStateToProps = state => {
+    return {
+        loading: state.form.loading,
+        error: state.form.error,
+        message: state.form.message 
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSubmit: (formData, url) => dispatch(formActions.formSubmit(formData, url))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
