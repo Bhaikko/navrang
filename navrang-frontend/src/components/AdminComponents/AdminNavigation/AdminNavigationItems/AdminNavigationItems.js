@@ -20,6 +20,8 @@ class AdminNavigationItems extends Component {
                 <AdminNavigationItem onClick={this.clickHandler} selected={this.props.currentSetting === "team" ? true : false } >Team</AdminNavigationItem>
                 <AdminNavigationItem onClick={this.clickHandler} selected={this.props.currentSetting === "contacts" ? true : false } >Contacts</AdminNavigationItem>
                 <AdminNavigationItem onClick={this.clickHandler} selected={this.props.currentSetting === "notices" ? true : false } >Notices</AdminNavigationItem>
+                <AdminNavigationItem onClick={this.clickHandler} selected={this.props.currentSetting === "issues" ? true : false } >Issues</AdminNavigationItem>
+                <AdminNavigationItem onClick={this.clickHandler} >Logout</AdminNavigationItem>
             </ul>
         );
     }

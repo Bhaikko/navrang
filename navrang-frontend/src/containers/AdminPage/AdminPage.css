@@ -33,3 +33,7 @@
     max-height: 60vh;
     overflow: auto;
 }
+
+.Form {
+    overflow: auto;
+}
