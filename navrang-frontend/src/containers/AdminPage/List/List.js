@@ -32,7 +32,7 @@ class List extends Component {
                         key={current.id} 
                         title={current.title || current.name || current.senderName} 
                         changeSelected={() => this.props.changeSelected(index)}
-                        deleteSelected={() => this.props.deleteSelected(current.id)}
+                        deleteSelected={() => this.props.deleteSelected(current.id, this.props.setting)}
                     > </ListItem>)}
 
                 </div>

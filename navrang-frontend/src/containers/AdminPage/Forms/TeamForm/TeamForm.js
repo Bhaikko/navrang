@@ -33,7 +33,7 @@ class TeamForm extends Component {
                     valid: false,
                     touched: false
                 },
-                content: {
+                about: {
                     elementType: "textarea",
                     elementConfig: {
                         placeholder: "About The Member"

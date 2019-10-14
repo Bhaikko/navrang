@@ -122,7 +122,7 @@ class Form extends Component {
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched} />
                 ))}
-                <Button disabled={!this.state.formIsValid} onClick={this.formSubmitHandler} >Send Us</Button>
+                <Button disabled={!this.state.formIsValid} onClick={this.formSubmitHandler} >Add {this.props.formName}</Button>
             </form>
         );
                     

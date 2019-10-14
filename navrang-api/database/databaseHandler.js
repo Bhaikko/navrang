@@ -9,7 +9,7 @@ const getAchievements = () => {
         ]
     })
         .then(achievements => databaseParser(achievements))
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const addAchievment = (title, subtitle, content, date, imageUrl) => {
@@ -21,7 +21,7 @@ const addAchievment = (title, subtitle, content, date, imageUrl) => {
         imageUrl 
     })
         .then(achievement => achievement)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const deleteAchievement = (id) => {
@@ -31,7 +31,7 @@ const deleteAchievement = (id) => {
         }
     })
         .then(response => response)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const getIssues = () => {
@@ -41,7 +41,7 @@ const getIssues = () => {
         ]
     })
         .then(issues => databaseParser(issues))
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const addIssue = (senderName, senderEmail, content, date) => {
@@ -53,7 +53,7 @@ const addIssue = (senderName, senderEmail, content, date) => {
         viewed  
     })
         .then(issue => issue)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const deleteIssue = (id) => {
@@ -63,7 +63,7 @@ const deleteIssue = (id) => {
         }
     })
         .then(response => response)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const getEvents = () => {
@@ -73,7 +73,7 @@ const getEvents = () => {
         ]
     })
         .then(events => databaseParser(events))
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const addEvent = (name, lastDate, registrationLink, imageLink, info) => {
@@ -85,7 +85,7 @@ const addEvent = (name, lastDate, registrationLink, imageLink, info) => {
         info
     })
         .then(event => event)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const deleteEvent = (id) => {
@@ -95,13 +95,13 @@ const deleteEvent = (id) => {
         }
     })
         .then(response => response)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const getTeam = () => {
     return Team.findAll()
         .then(team => databaseParser(team))
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const addTeam = (name, designation, about, contactLink, imageLink) => {
@@ -113,7 +113,7 @@ const addTeam = (name, designation, about, contactLink, imageLink) => {
         imageLink
     })
         .then(team => team)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const deleteTeam = (id) => {
@@ -123,7 +123,7 @@ const deleteTeam = (id) => {
         }
     })
         .then(response => response)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const getNotices = () => {
@@ -133,7 +133,7 @@ const getNotices = () => {
         ]
     })
         .then(notices => databaseParser(notices))
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const addNotice = (title, content, name, designation, date, fileLink) => {
@@ -146,7 +146,7 @@ const addNotice = (title, content, name, designation, date, fileLink) => {
         fileLink 
     })
         .then(notice => notice)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const deleteNotice = (id) => {
@@ -156,7 +156,7 @@ const deleteNotice = (id) => {
         }
     })
         .then(response => response)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const getContacts = () => {
@@ -166,7 +166,7 @@ const getContacts = () => {
         ]
     })
         .then(contacts => databaseParser(contacts))
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const addContact = (name, phone, email) => {
@@ -176,7 +176,7 @@ const addContact = (name, phone, email) => {
         email  
     })
         .then(contacts => contacts)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 const deleteContact = (id) => {
@@ -186,7 +186,7 @@ const deleteContact = (id) => {
         }
     })
         .then(response => response)
-        .catch(console.log);
+        .catch(err => { throw new Error(err) });
 }
 
 

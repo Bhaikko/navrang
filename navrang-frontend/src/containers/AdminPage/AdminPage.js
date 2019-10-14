@@ -15,11 +15,7 @@ import NoticeCard from './../../components/Notices/NoticeCard/NoticeCard';
 import ContactCard from './../../components/ContactCard/ContactCard';
 import IssueCard from './../../components/Issue/Issue';
 
-// import AchievementForm from './Forms/AchievementForm/AchievementForm';
-// import ContactForm from './Forms/ContactForm/ContactForm';
-// import EventForm from './Forms/EventForm/EventForm';
-// import NoticeForm from './Forms/NoticeForm/NoticeForm';
-// import TeamForm from './Forms/TeamForm/TeamForm';
+import Modal from './../../components/UI/Modal/Modal';
 
 import * as dashboardActions from './../../store/action/index';
 
@@ -102,12 +98,22 @@ class AdminPage extends Component {
         this.props.onToggleForm(this.props.bAdding);
     }
 
+    backDropClickHandler = () => {
+        window.location = "/admin";
+    }
+
+    deleteHandler = (id, currentSetting) => {
+        this.props.onDeletePreview(id, currentSetting);
+    }
+
     render () {
         let content = <Spinner />
 
         if (!this.props.loading) {
             content = (
                 <div className={classes.Container}>
+                    {this.props.formMessage ? <Modal modalClosed={this.backDropClickHandler} show>{this.props.formMessage}</Modal> : null}
+                    {this.props.formError ? <Modal modalClosed={this.backDropClickHandler} show>{this.props.formError}</Modal> : null}
                     <div className={classes.LeftSection}>
                         
                         <div className={classes.LeftSectionHeader}>
@@ -126,6 +132,7 @@ class AdminPage extends Component {
                                         <List data={this.props.data}
                                             changeSelected={this.selectedDataHandler}
                                             deleteSelected={this.deleteHandler}
+                                            setting={this.props.currentSetting}
                                         />
                                     </div>
                                 ) 
@@ -169,6 +176,7 @@ const mapStateToProps = state => {
         data: state.dashboard.data,
         loading: state.dashboard.loading,
         error: state.dashboard.error,
+        message: state.dashboard.message,
         bAdding: state.dashboard.bAdding,
         currentPreview: state.dashboard.currentPreview,
         currentForm: state.dashboard.currentForm,
@@ -181,7 +189,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onToggleForm: (currentFormState) => dispatch(dashboardActions.toggleForm(currentFormState)),
-        onChangePreview: (currentPreview) => dispatch(dashboardActions.changePreview(currentPreview))
+        onChangePreview: (currentPreview) => dispatch(dashboardActions.changePreview(currentPreview)),
+        onDeletePreview: (id, setting) => dispatch(dashboardActions.deleteAchievement(id, setting))
     }
 }
 

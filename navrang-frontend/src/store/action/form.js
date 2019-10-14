@@ -12,22 +12,25 @@ export const formSubmit = (formData, url) => {
         let fd = new FormData();
         for(let key in formData) {
             fd.append(key, formData[key]);
-        }
+        }       
 
         axios.post(url, fd, {
             headers: {
-                // 'content-type': 'multipart/form-data'
                 // Authorization: `JWT ${token}`
             }
         })
-            .then(response => dispatch({
-                type: actionTypes.ADMIN_FORM_SUCCESS,
-                message: response 
-            }))
+            .then(response => {
+                dispatch({
+                    type: actionTypes.ADMIN_FORM_SUCCESS,
+                    message: "New Entry Added" 
+                }) 
+            })
             .catch(err => dispatch({
                 type: actionTypes.ADMIN_FORM_FAILED,
-                error: err
+                error: "Something Went Wrong, Sorry"
             }));
+            
     }
 }
+
 

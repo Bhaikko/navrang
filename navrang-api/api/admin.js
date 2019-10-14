@@ -3,6 +3,8 @@ const multer = require("multer");
 
 const databaseHandler = require("../database"); 
 
+const { UPLOADS_DIRECTORY } = require("./../credentials");
+
 const router = express.Router();
 const upload = multer({ dest: './uploads' });
 
@@ -12,16 +14,17 @@ router.post("/achievements", upload.single("files"), (req, res, next) => {
         req.body.subtitle,
         req.body.content,
         req.body.date,
-        req.file.filename
+        UPLOADS_DIRECTORY + req.file.filename
     )
         .then(response => res.sendStatus(200))
         .catch(err => res.sendStatus(400));
 });
 
-router.delete("/achievements", (req, res, next) => {
-    databaseHandler.deleteAchievement(req.body.id)
+router.delete("/achievements/:id", (req, res, next) => {
+
+    databaseHandler.deleteAchievement(req.params.id)
         .then(response => res.sendStatus(200))
-        .catch(err => res.send(400));
+        .catch(err => res.sendStatus(400));
 });
 
 router.post("/issues", (req, res, next) => {
@@ -35,8 +38,8 @@ router.post("/issues", (req, res, next) => {
         .catch(err => res.sendStatus(400));
 });
 
-router.delete("/issues", (req, res, next) => {
-    databaseHandler.deleteIssue(req.body.id)
+router.delete("/issues/:id", (req, res, next) => {
+    databaseHandler.deleteIssue(req.params.id)
         .then(response => res.sendStatus(200))
         .catch(err => res.sendStatus(400));
 });
@@ -47,15 +50,17 @@ router.post("/events", upload.single("files"), (req, res, next) => {
         req.body.name,
         req.body.lastDate,
         req.body.registrationLink,
-        req.file.filename,
+        UPLOADS_DIRECTORY + req.file.filename,
         req.body.info 
     )
         .then(response => res.sendStatus(200))
         .catch(err => res.sendStatus(400));
 });
 
-router.delete("/events", (req, res, next) => {
-    databaseHandler.deleteEvent(req.body.id)
+router.delete("/events/:id", (req, res, next) => {
+    const id = req.params.id
+
+    databaseHandler.deleteEvent(id)
         .then(response => res.sendStatus(200))
         .catch(err => res.sendStatus(400));
 });
@@ -66,39 +71,39 @@ router.post("/team", upload.single("files"), (req, res, next) => {
         req.body.designation,
         req.body.about,
         req.body.contactLink,
-        req.file.filename
+        UPLOADS_DIRECTORY + req.file.filename
     )
         .then(response => res.sendStatus(200))
         .catch(err => res.sendStatus(400));
 });
 
-router.delete("/team", (req, res, next) => {
-    databaseHandler.deleteTeam(req.body.id)
+router.delete("/team/:id", (req, res, next) => {
+    databaseHandler.deleteTeam(req.params.id)
         .then(response => res.sendStatus(200))
         .catch(err => res.sendStatus(400));
 });
 
-router.post("/notices", (req, res, next) => {
+router.post("/notices", upload.single("files"), (req, res, next) => {
     databaseHandler.addNotice(
         req.body.title, 
         req.body.content,
         req.body.name,
         req.body.designation,
         req.body.date,
-        req.body.fileLink
+        UPLOADS_DIRECTORY + req.file.filename
     )
         .then(response => res.sendStatus(200))
         .catch(err => res.sendStatus(400));
 });
 
-router.delete("/notices", (req, res, next) => {
-    databaseHandler.deleteNotice(req.body.id)
+router.delete("/notices/:id", (req, res, next) => {
+    databaseHandler.deleteNotice(req.params.id)
         .then(response => res.sendStatus(200))
         .catch(err => res.sendStatus(400));
 });
 
-router.post("/contacts", (req, res, next) => {
-    console.log(req.body);
+router.post("/contacts", upload.single("files"), (req, res, next) => {
+
     databaseHandler.addContact(
         req.body.name,
         req.body.phone,
@@ -108,8 +113,8 @@ router.post("/contacts", (req, res, next) => {
         .catch(err => res.sendStatus(400));
 });
 
-router.delete("/contacts", (req, res, next) => {
-    databaseHandler.deleteContact(req.body.id)
+router.delete("/contacts/:id", (req, res, next) => {
+    databaseHandler.deleteContact(req.params.id)
         .then(response => res.sendStatus(200))
         .catch(err => res.sendStatus(400));
 });

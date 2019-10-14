@@ -57,6 +57,29 @@ const reducer = (state = initialState, action) => {
                 currentPreview: action.currentPreview
             }
 
+        case actionTypes.DELETE_ENTRY_INIT:
+            return {
+                ...state,
+                loading: true,
+                error: false,
+                currentPreview: null,
+                currentForm: null 
+            }
+
+        case actionTypes.DELETE_ENTRY_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                error: false 
+            }
+
+        case actionTypes.DELETE_ENTRY_FAILED:
+            return {
+                ...state,
+                loading: false,
+                error: true
+            }
+
         default: 
             return state;
     }

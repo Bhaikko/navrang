@@ -8,6 +8,27 @@ import EventForm from './../../containers/AdminPage/Forms/EventForm/EventForm';
 import NoticeForm from './../../containers/AdminPage/Forms/NoticeForm/NoticeForm';
 import TeamForm from './../../containers/AdminPage/Forms/TeamForm/TeamForm';
 
+export const deleteAchievement = (id, setting) => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.DELETE_ENTRY_INIT
+        });
+
+        axios.delete(`/admin/${setting}/${id}`, null, {
+            headers: {
+                // Authorization: ``
+            }
+        })
+            .then(response => dispatch({
+                type: actionTypes.DELETE_ENTRY_SUCCESS,
+                message: response, 
+            }))
+            .catch(err => dispatch({
+                type: actionTypes.DELETE_ENTRY_FAILED
+            }));
+    }
+}
+
 
 export const toggleForm = (currentFormState) => {
 
@@ -28,8 +49,7 @@ export const getAchievements = (data) => {
 
     return dispatch => {
         dispatch({
-            type: actionTypes.CHANGE_DATA_BEGIN,
-            loading: true,
+            type: actionTypes.CHANGE_DATA_BEGIN
         });
         axios.get("/public/achievements")
             .then(response => dispatch({

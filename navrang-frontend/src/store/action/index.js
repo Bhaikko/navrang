@@ -6,7 +6,8 @@ export {
     getNotices,
     getTeam,
     toggleForm,
-    changePreview
+    changePreview,
+    deleteAchievement
 } from './dashboard';
 
 export {
