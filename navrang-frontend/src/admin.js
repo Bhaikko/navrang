@@ -9,12 +9,14 @@ import AdminApp from './AdminApp';
 
 import dashboardReducer from './store/reducer/dashboard';
 import formReducer from './store/reducer/form';
+import authReducer from './store/reducer/auth';
 
 import * as serviceWorker from './serviceWorker';
 
 const rootReducer = combineReducers({
     dashboard: dashboardReducer,
-    form: formReducer 
+    form: formReducer,
+    auth: authReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

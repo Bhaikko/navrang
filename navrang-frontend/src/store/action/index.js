@@ -7,10 +7,14 @@ export {
     getTeam,
     toggleForm,
     changePreview,
-    deleteAchievement
+    deleteItem
 } from './dashboard';
 
 export {
     formSubmit
 } from './form'
+
+export {
+    loginAttempt
+} from './auth'
 

@@ -67,10 +67,13 @@ const reducer = (state = initialState, action) => {
             }
 
         case actionTypes.DELETE_ENTRY_SUCCESS:
+            const updatedData = state.data.filter(current => current.id !== action.id);
+
             return {
                 ...state,
                 loading: false,
-                error: false 
+                error: false ,
+                data: updatedData
             }
 
         case actionTypes.DELETE_ENTRY_FAILED:

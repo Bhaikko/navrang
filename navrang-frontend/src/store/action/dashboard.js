@@ -8,20 +8,24 @@ import EventForm from './../../containers/AdminPage/Forms/EventForm/EventForm';
 import NoticeForm from './../../containers/AdminPage/Forms/NoticeForm/NoticeForm';
 import TeamForm from './../../containers/AdminPage/Forms/TeamForm/TeamForm';
 
-export const deleteAchievement = (id, setting) => {
+export const deleteItem = (id, setting) => {
     return dispatch => {
         dispatch({
             type: actionTypes.DELETE_ENTRY_INIT
         });
 
+        const token = localStorage.getItem("token");
+        console.log(token);
+
         axios.delete(`/admin/${setting}/${id}`, null, {
             headers: {
-                // Authorization: ``
+                Authorization: `JWT ${token}`
             }
         })
             .then(response => dispatch({
                 type: actionTypes.DELETE_ENTRY_SUCCESS,
                 message: response, 
+                id: id
             }))
             .catch(err => dispatch({
                 type: actionTypes.DELETE_ENTRY_FAILED

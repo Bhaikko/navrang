@@ -13,10 +13,10 @@ export const formSubmit = (formData, url) => {
         for(let key in formData) {
             fd.append(key, formData[key]);
         }       
-
+        const token = localStorage.getItem("token");
         axios.post(url, fd, {
             headers: {
-                // Authorization: `JWT ${token}`
+                Authorization: `JWT ${token}`
             }
         })
             .then(response => {

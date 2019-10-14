@@ -190,7 +190,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onToggleForm: (currentFormState) => dispatch(dashboardActions.toggleForm(currentFormState)),
         onChangePreview: (currentPreview) => dispatch(dashboardActions.changePreview(currentPreview)),
-        onDeletePreview: (id, setting) => dispatch(dashboardActions.deleteAchievement(id, setting))
+        onDeletePreview: (id, setting) => dispatch(dashboardActions.deleteItem(id, setting))
     }
 }
 

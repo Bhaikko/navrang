@@ -7,6 +7,7 @@ import Button from './../../../components/UI/Button/Button';
 import * as formActions from './../../../store/action/index'
 
 import classes from './Form.css';
+import Title from './../../../components/UI/Title/Title';
 
 class Form extends Component {
     constructor (props) {
@@ -58,7 +59,15 @@ class Form extends Component {
             formData.files = this.state.file[0];
         }
 
-        this.props.onSubmit(formData, this.props.url);
+        switch (this.props.requestType) {
+            case "loginAttempt":
+                this.props.onLogin(formData);
+                break;
+            default:
+                
+                this.props.onSubmit(formData, this.props.url);
+                break;
+        }
     }
 
     inputChangeHandler = (event, inputIdentifier) => {
@@ -122,7 +131,7 @@ class Form extends Component {
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched} />
                 ))}
-                <Button disabled={!this.state.formIsValid} onClick={this.formSubmitHandler} >Add {this.props.formName}</Button>
+                <Button disabled={!this.state.formIsValid} onClick={this.formSubmitHandler} >{this.props.noAdd ? "" : "Add"} {this.props.formName}</Button>
             </form>
         );
                     
@@ -130,6 +139,7 @@ class Form extends Component {
             <div className={classes.Form}>
                 <h4>{this.props.formName}</h4>
                 {form}
+                {this.props.error ? <Title>{this.props.error}</Title> : null}
             </div>
         );
     }
@@ -137,15 +147,14 @@ class Form extends Component {
 
 const mapStateToProps = state => {
     return {
-        loading: state.form.loading,
-        error: state.form.error,
-        message: state.form.message 
+        loading: state.form.loading, 
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmit: (formData, url) => dispatch(formActions.formSubmit(formData, url))
+        onSubmit: (formData, url) => dispatch(formActions.formSubmit(formData, url)),
+        onLogin: (formData) => dispatch(formActions.loginAttempt(formData))
     }
 }
 
