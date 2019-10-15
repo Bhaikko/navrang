@@ -7,24 +7,39 @@ import Title from './../../components/UI/Title/Title';
 import Notices from './../../components/Notices/Notices';
 import Modal from './../../components/UI/Modal/Modal';
 
-import { NOTICES } from './../../data/data';
 import NoticeCard from './../../components/Notices/NoticeCard/NoticeCard';
+import Spinner from './../../components/UI/Spinner/Spinner';
+
+import axios from './../../axios';
+
 
 class NoticePage extends Component {
 
     constructor (props) {
         super(props);
+
         this.state = {
-            NOTICES,
-            modalContent: null
+            loading: true,
+            notices: []
         }
+        
+    }
+
+    componentDidMount () {
+        axios.get("/public/notices")
+            .then(data => {
+                this.setState({
+                    loading: false,
+                    notices: data.data 
+                });
+            })
     }
 
     showModal = (id) => {
-        const currentNotice = NOTICES.find(notice => notice.id === id);
+        const currentNotice = this.state.notices.find(notice => notice.id === id);
         const newModalContent = (
             <NoticeCard
-                date={currentNotice.date}
+                date={new Date(currentNotice.date).toLocaleString()}
                 title={currentNotice.title}
                 content={currentNotice.content}
                 name={currentNotice.name}
@@ -44,11 +59,14 @@ class NoticePage extends Component {
     }
 
     render () {
+        if (this.state.loading) {
+            return <Spinner />
+        }
 
         return (
             <Container className={classes.Container}>
                 <Title>Notices And News</Title>
-                <Notices notices={this.state.NOTICES} showModal={this.showModal} />
+                <Notices notices={this.state.notices} showModal={this.showModal} />
 
                 <Modal show={this.state.modalContent} modalClosed={this.closeModal} >
                     {this.state.modalContent}

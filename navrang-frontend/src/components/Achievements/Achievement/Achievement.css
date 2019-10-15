@@ -14,8 +14,9 @@
 .Achievement img {
     /* position: absolute; */
     top: -5px;
-    width: 90%;
+    width: 100%;
     box-shadow: 5px solid grey;
+    height: 350px;
 }
 
 .Achievement h2 {

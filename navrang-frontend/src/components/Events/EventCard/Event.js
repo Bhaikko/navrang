@@ -3,6 +3,7 @@ import React from 'react';
 import classes from './Event.css';
 
 const event = props => {
+    
     return (
         <div className={classes.CardContainer} >
             <div className={classes.ImageContainer} style={{backgroundImage: `url(${props.imageUrl})`}}></div>

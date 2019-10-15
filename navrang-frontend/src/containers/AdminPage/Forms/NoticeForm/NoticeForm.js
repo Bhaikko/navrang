@@ -80,9 +80,6 @@ class NoticeForm extends Component {
                         uploadinfo: "File Related To Notice"
                     },
                     value: "",
-                    validation: {
-                        required: true 
-                    },
                     valid: false,
                     touched: false 
                 },

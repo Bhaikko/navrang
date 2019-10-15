@@ -2,18 +2,40 @@ const { Achievements, Issues, Events, Team, Notices, Contacts } = require("./dat
 
 const { databaseParser } = require("./utility");
 
-const getAchievements = () => {
+const getTeamByDesignation = (designation) => {
+    return Team.findOne({
+        where: {
+            designation
+        }
+    })
+        .then(member => member)
+        .catch(err => err);
+}
+
+const getFrontPageData = () => {
+    return Promise.all([
+        getTeamByDesignation("President"),
+        getTeamByDesignation("Vice President"),
+        getTeamByDesignation("Counsellor"),
+        getAchievements(3)
+    ])
+        .then(response => response)
+        .catch(console.log);
+}
+
+const getAchievements = (limit) => {
     return Achievements.findAll({
         order: [
             ["title", "ASC"]
-        ]
+        ],
+        limit: limit ? limit : 1000
     })
         .then(achievements => databaseParser(achievements))
         .catch(err => { throw new Error(err) });
 }
 
 const getAchievement = id => {
-    console.log(id);
+
     return Achievements.findOne({
         where: {
             id
@@ -61,8 +83,7 @@ const addIssue = (senderName, senderEmail, content, date) => {
         senderName,
         senderEmail,
         content,
-        date,
-        viewed  
+        date  
     })
         .then(issue => issue)
         .catch(err => { throw new Error(err) });
@@ -258,5 +279,6 @@ module.exports = {
     deleteEvent,
     deleteIssue,
     deleteNotice,
-    deleteTeam
+    deleteTeam,
+    getFrontPageData
 }

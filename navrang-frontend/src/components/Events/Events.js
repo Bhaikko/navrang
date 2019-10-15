@@ -8,9 +8,9 @@ const events = props => {
         <div className={classes.Events}>
             {props.events.map(event => <Event 
                 key={event.id}
-                imageUrl={event.imageUrl}
-                link={event.link}
-                date={event.date}
+                imageUrl={event.imageLink}
+                link={event.registrationLink}
+                date={new Date(event.lastDate).toLocaleDateString()}
                 info={event.info}
                 name={event.name} />)}
 

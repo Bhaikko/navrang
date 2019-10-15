@@ -27,7 +27,11 @@ router.delete("/achievements/:id", (req, res, next) => {
         .then(achievement => {
             const acheivementSplitArray = achievement.imageUrl.split("/");
             const filePath = __dirname + "/../uploads/" + acheivementSplitArray[acheivementSplitArray.length - 1];
-            fs.unlinkSync(filePath);
+            try {
+                fs.unlinkSync(filePath);
+            } catch {
+                
+            }
 
             databaseHandler.deleteAchievement(req.params.id)
                 .then(response => res.sendStatus(200))
@@ -74,7 +78,11 @@ router.delete("/events/:id", (req, res, next) => {
         .then(event => {
             const eventArray = event.imageLink.split("/");
             const filePath = __dirname + "/../uploads/" + eventArray[eventArray.length - 1];
-            fs.unlinkSync(filePath);
+            try {
+                fs.unlinkSync(filePath);
+            } catch {
+                
+            }
 
             databaseHandler.deleteEvent(id)
                 .then(response => res.sendStatus(200))
@@ -102,7 +110,11 @@ router.delete("/team/:id", (req, res, next) => {
         .then(team => {
             const teamArray = team.imageLink.split("/");
             const filePath = __dirname + "/../uploads/" + teamArray[teamArray.length - 1];
-            fs.unlinkSync(filePath);
+            try {
+                fs.unlinkSync(filePath);
+            } catch {
+                
+            }
             databaseHandler.deleteTeam(req.params.id)
                 .then(response => res.sendStatus(200))
                 .catch(err => res.sendStatus(400));
@@ -130,7 +142,11 @@ router.delete("/notices/:id", (req, res, next) => {
         .then(notice => {
             const noticeArray = notice.fileLink.split("/");
             const filePath = __dirname + "/../uploads/" + noticeArray[noticeArray.length - 1];
-            fs.unlinkSync(filePath);
+            try {
+                fs.unlinkSync(filePath);
+            } catch {
+                
+            }
             databaseHandler.deleteNotice(req.params.id)
                 .then(response => res.sendStatus(200))
                 .catch(err => res.sendStatus(400));

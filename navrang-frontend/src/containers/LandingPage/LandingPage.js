@@ -15,25 +15,47 @@ import Button from './../../components/UI/Button/Button';
 
 import classes from './LandingPage.css';
 
-import * as data from './../../data/data';
+import axios from './../../axios';
+
+import Spinner from './../../components/UI/Spinner/Spinner';
 
 class LandingPage extends Component {
 
     constructor (props) {
         super(props);
+
         this.state = {
-            ACHIEVEMENTS: [data.ACHIEVEMENTS[0], data.ACHIEVEMENTS[1], data.ACHIEVEMENTS[2]],
-            ALUMNI: [data.ALUMNI[0], data.ALUMNI[1], data.ALUMNI[2]],
+            loading: true,
+            alumni: null,
+            achievements: null 
         }
     }
 
+    componentDidMount () {
+        axios.get("/public/front")
+            .then(data => {
+                this.setState({
+                    alumni: [data.data[0], data.data[1], data.data[2]],
+                    achievements: data.data[3],
+                    loading: false
+                })
+            });
+    }
+
     render () {
+
+        if (this.state.loading) {
+            return (
+                <Spinner />
+            );
+        }
+
         return (
             <div className={classes.LandingPage}>
                 <GroupImage />
                 <Container>
                     <Title >Achievements</Title>
-                    <Achievements achievements={this.state.ACHIEVEMENTS} />
+                    <Achievements achievements={this.state.achievements} />
                     <Link to="/achievements" style={{textDecoration: "none"}}>
                         <Button>View All Achievements</Button>
 
@@ -42,7 +64,7 @@ class LandingPage extends Component {
 
                 <Container>
                     <Title >Alumni</Title>
-                    <Alumni team={this.state.ALUMNI} />
+                    <Alumni team={this.state.alumni} />
                     <Link to="/alumni" style={{textDecoration: "none"}}>
                         <Button>Meet The Team</Button>
                     </Link>

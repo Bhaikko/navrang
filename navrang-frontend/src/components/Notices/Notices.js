@@ -9,7 +9,7 @@ const Notices = props => {
             {props.notices.map(notice => <Notice 
                 key={notice.id}
                 title={notice.title}
-                date={notice.date}
+                date={new Date(notice.date).toLocaleDateString()}
                 showModal={props.showModal}
                 id={notice.id}
             />)}
