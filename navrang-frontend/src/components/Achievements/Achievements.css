@@ -4,5 +4,8 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 1s;
 }
 

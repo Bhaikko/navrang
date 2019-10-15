@@ -1,3 +1,7 @@
 .LandingPage {
     overflow-x: hidden;
 }
+
+.Invisible {
+    opacity: 0;
+}

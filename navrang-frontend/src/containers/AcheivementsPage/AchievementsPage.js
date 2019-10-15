@@ -37,7 +37,7 @@ class AchievementsPage extends Component {
         return (
             <Container className={classes.Container} >
                 <Title>Here's What We Built So Far</Title>
-                <Achievements achievements={this.state.achievements} />
+                <Achievements achievements={this.state.achievements} className={classes.Invisible} />
             </Container>
         ); 
     }

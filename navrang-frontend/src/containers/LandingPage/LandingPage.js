@@ -55,7 +55,7 @@ class LandingPage extends Component {
                 <GroupImage />
                 <Container>
                     <Title >Achievements</Title>
-                    <Achievements achievements={this.state.achievements} />
+                    <Achievements achievements={this.state.achievements} animate />
                     <Link to="/achievements" style={{textDecoration: "none"}}>
                         <Button>View All Achievements</Button>
 
@@ -64,7 +64,7 @@ class LandingPage extends Component {
 
                 <Container>
                     <Title >Alumni</Title>
-                    <Alumni team={this.state.alumni} />
+                    <Alumni team={this.state.alumni} animate />
                     <Link to="/alumni" style={{textDecoration: "none"}}>
                         <Button>Meet The Team</Button>
                     </Link>
