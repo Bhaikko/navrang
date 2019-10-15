@@ -5,7 +5,7 @@ const { databaseParser } = require("./utility");
 const getAchievements = () => {
     return Achievements.findAll({
         order: [
-            ["date", "DESC"]
+            ["title", "ASC"]
         ]
     })
         .then(achievements => databaseParser(achievements))
@@ -48,7 +48,7 @@ const deleteAchievement = (id) => {
 const getIssues = () => {
     return Issues.findAll({
         order: [
-            ["date", "DESC"]
+            ["senderName", "ASC"]
         ]
     })
         .then(issues => databaseParser(issues))
@@ -92,7 +92,7 @@ const getEvent = id => {
 const getEvents = () => {
     return Events.findAll({
         order: [
-            ["lastDate", "DESC"]
+            ["name", "ASC"]
         ]
     })
         .then(events => databaseParser(events))
@@ -175,7 +175,7 @@ const getNotice = id => {
 const getNotices = () => {
     return Notices.findAll({
         order: [
-            ["date", "DESC"]
+            ["title", "ASC"]
         ]
     })
         .then(notices => databaseParser(notices))

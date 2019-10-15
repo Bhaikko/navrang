@@ -20,8 +20,7 @@ class List extends Component {
     }
 
     render () {
-        let filteredData = this.props.data.sort((a, b) => (a.title || a.name || a.senderName) < (b.title || b.name || b.senderName))
-        filteredData = this.props.data.filter(current => ((current.title || current.name || current.senderName).toLowerCase()).includes(this.state.searchQuery.toLowerCase()))
+        let filteredData = this.props.data.filter(current => ((current.title || current.name || current.senderName).toLowerCase()).includes(this.state.searchQuery.toLowerCase()))
 
         return (
             <div>
