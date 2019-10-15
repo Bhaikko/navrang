@@ -1,5 +1,6 @@
 const express = require("express");
 const multer = require("multer");
+const fs = require("fs");
 
 const databaseHandler = require("../database"); 
 
@@ -22,9 +23,18 @@ router.post("/achievements", upload.single("files"), (req, res, next) => {
 
 router.delete("/achievements/:id", (req, res, next) => {
 
-    databaseHandler.deleteAchievement(req.params.id)
-        .then(response => res.sendStatus(200))
-        .catch(err => res.sendStatus(400));
+    databaseHandler.getAchievement(req.params.id)
+        .then(achievement => {
+            const acheivementSplitArray = achievement.imageUrl.split("/");
+            const filePath = __dirname + "/../uploads/" + acheivementSplitArray[acheivementSplitArray.length - 1];
+            fs.unlinkSync(filePath);
+
+            databaseHandler.deleteAchievement(req.params.id)
+                .then(response => res.sendStatus(200))
+                .catch(err => res.sendStatus(400));
+        });
+
+    
 });
 
 router.post("/issues", (req, res, next) => {
@@ -58,11 +68,20 @@ router.post("/events", upload.single("files"), (req, res, next) => {
 });
 
 router.delete("/events/:id", (req, res, next) => {
-    const id = req.params.id
+    const id = req.params.id;
 
-    databaseHandler.deleteEvent(id)
-        .then(response => res.sendStatus(200))
+    databaseHandler.getEvent(id)
+        .then(event => {
+            const eventArray = event.imageLink.split("/");
+            const filePath = __dirname + "/../uploads/" + eventArray[eventArray.length - 1];
+            fs.unlinkSync(filePath);
+
+            databaseHandler.deleteEvent(id)
+                .then(response => res.sendStatus(200))
+                .catch(err => res.sendStatus(400));
+        })
         .catch(err => res.sendStatus(400));
+
 });
 
 router.post("/team", upload.single("files"), (req, res, next) => {
@@ -78,9 +97,18 @@ router.post("/team", upload.single("files"), (req, res, next) => {
 });
 
 router.delete("/team/:id", (req, res, next) => {
-    databaseHandler.deleteTeam(req.params.id)
-        .then(response => res.sendStatus(200))
+
+    databaseHandler.getTeamMember(req.params.id)
+        .then(team => {
+            const teamArray = team.imageLink.split("/");
+            const filePath = __dirname + "/../uploads/" + teamArray[teamArray.length - 1];
+            fs.unlinkSync(filePath);
+            databaseHandler.deleteTeam(req.params.id)
+                .then(response => res.sendStatus(200))
+                .catch(err => res.sendStatus(400));
+        })
         .catch(err => res.sendStatus(400));
+
 });
 
 router.post("/notices", upload.single("files"), (req, res, next) => {
@@ -97,9 +125,18 @@ router.post("/notices", upload.single("files"), (req, res, next) => {
 });
 
 router.delete("/notices/:id", (req, res, next) => {
-    databaseHandler.deleteNotice(req.params.id)
-        .then(response => res.sendStatus(200))
+
+    databaseHandler.getNotice(req.params.id)
+        .then(notice => {
+            const noticeArray = notice.fileLink.split("/");
+            const filePath = __dirname + "/../uploads/" + noticeArray[noticeArray.length - 1];
+            fs.unlinkSync(filePath);
+            databaseHandler.deleteNotice(req.params.id)
+                .then(response => res.sendStatus(200))
+                .catch(err => res.sendStatus(400));
+        })
         .catch(err => res.sendStatus(400));
+
 });
 
 router.post("/contacts", upload.single("files"), (req, res, next) => {

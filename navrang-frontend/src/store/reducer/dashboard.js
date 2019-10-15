@@ -4,7 +4,6 @@ const initialState = {
     setting: null,
     data: null,
     loading: false,
-    error: false,
     bAdding: false,
     currentPreview: null,
     currentForm: null 
@@ -17,7 +16,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
-                error: false,
                 currentPreview: false,
                 currentForm: false,
                 bAdding: false 
@@ -29,7 +27,6 @@ const reducer = (state = initialState, action) => {
                 setting: action.setting,
                 data: action.data,
                 loading: false,
-                error: false,
                 bAdding: false,
                 currentPreview: null,
                 currentForm: action.currentForm
@@ -38,7 +35,6 @@ const reducer = (state = initialState, action) => {
         case actionTypes.CHANGE_DATA_FAILED:
             return {
                 ...state,
-                error: true,
                 loading: false,
                 bAdding: false,
                 currentPreview: null,
@@ -61,7 +57,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
-                error: false,
                 currentPreview: null,
                 currentForm: null 
             }
@@ -72,7 +67,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                error: false ,
                 data: updatedData
             }
 
@@ -80,7 +74,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                error: true
             }
 
         default: 

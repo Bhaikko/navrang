@@ -26,3 +26,8 @@ export const loginAttempt = (formData) => {
     }
 }
 
+export const logout = () => {
+    return {
+        type: actionTypes.ADMIN_LOGOUT
+    }
+}

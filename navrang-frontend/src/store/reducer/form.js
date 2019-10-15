@@ -28,6 +28,14 @@ const reducer = (state = initialState, action) => {
                 error: action.error,
                 message: null
             }
+
+        case actionTypes.CLEAR_FORM:
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                message: null
+            }
         
         
         default: 

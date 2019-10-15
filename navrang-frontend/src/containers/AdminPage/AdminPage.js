@@ -17,7 +17,7 @@ import IssueCard from './../../components/Issue/Issue';
 
 import Modal from './../../components/UI/Modal/Modal';
 
-import * as dashboardActions from './../../store/action/index';
+import * as actions from './../../store/action/index';
 
 class AdminPage extends Component {
 
@@ -99,7 +99,8 @@ class AdminPage extends Component {
     }
 
     backDropClickHandler = () => {
-        window.location = "/admin";
+        this.props.onGetItem(this.props.currentSetting);
+        this.props.onClearForm();
     }
 
     deleteHandler = (id, currentSetting) => {
@@ -172,14 +173,14 @@ class AdminPage extends Component {
 
 const mapStateToProps = state => {
     return {
+        // dashboard state
         currentSetting: state.dashboard.setting,
         data: state.dashboard.data,
         loading: state.dashboard.loading,
-        error: state.dashboard.error,
-        message: state.dashboard.message,
         bAdding: state.dashboard.bAdding,
         currentPreview: state.dashboard.currentPreview,
         currentForm: state.dashboard.currentForm,
+        // form state
         formLoading: state.form.loading,
         formError: state.form.error,
         formMessage: state.form.message
@@ -188,9 +189,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onToggleForm: (currentFormState) => dispatch(dashboardActions.toggleForm(currentFormState)),
-        onChangePreview: (currentPreview) => dispatch(dashboardActions.changePreview(currentPreview)),
-        onDeletePreview: (id, setting) => dispatch(dashboardActions.deleteItem(id, setting))
+        onToggleForm: (currentFormState) => dispatch(actions.toggleForm(currentFormState)),
+        onChangePreview: (currentPreview) => dispatch(actions.changePreview(currentPreview)),
+        onDeletePreview: (id, setting) => dispatch(actions.deleteItem(id, setting)),
+        onGetItem: (setting) => dispatch(actions.getItem(setting)),
+        onClearForm: () => dispatch(actions.clearForm())
     }
 }
 

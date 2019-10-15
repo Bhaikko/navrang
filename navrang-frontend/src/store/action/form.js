@@ -33,4 +33,10 @@ export const formSubmit = (formData, url) => {
     }
 }
 
+export const clearForm = () => {
+    return {
+        type: actionTypes.CLEAR_FORM
+    }
+}
+
 

@@ -12,6 +12,17 @@ const getAchievements = () => {
         .catch(err => { throw new Error(err) });
 }
 
+const getAchievement = id => {
+    console.log(id);
+    return Achievements.findOne({
+        where: {
+            id
+        }
+    })
+        .then(achievement => achievement)
+        .catch(console.log);
+}
+
 const addAchievment = (title, subtitle, content, date, imageUrl) => {
     return Achievements.create({
         title,
@@ -44,6 +55,7 @@ const getIssues = () => {
         .catch(err => { throw new Error(err) });
 }
 
+
 const addIssue = (senderName, senderEmail, content, date) => {
     return Issues.create({
         senderName,
@@ -65,6 +77,17 @@ const deleteIssue = (id) => {
         .then(response => response)
         .catch(err => { throw new Error(err) });
 }
+
+const getEvent = id => {
+    return Events.findOne({
+        where: {
+            id
+        }
+    })
+        .then(event => event)
+        .catch(console.log);
+}
+
 
 const getEvents = () => {
     return Events.findAll({
@@ -98,6 +121,17 @@ const deleteEvent = (id) => {
         .catch(err => { throw new Error(err) });
 }
 
+const getTeamMember = id => {
+    return Team.findOne({
+        where: {
+            id
+        }
+    })
+        .then(team => team)
+        .catch(console.log);
+}
+
+
 const getTeam = () => {
     return Team.findAll()
         .then(team => databaseParser(team))
@@ -125,6 +159,18 @@ const deleteTeam = (id) => {
         .then(response => response)
         .catch(err => { throw new Error(err) });
 }
+
+const getNotice = id => {
+
+    return Notices.findOne({
+        where: {
+            id
+        }
+    })
+        .then(notice => notice)
+        .catch(console.log);
+}
+
 
 const getNotices = () => {
     return Notices.findAll({
@@ -198,10 +244,14 @@ module.exports = {
     addTeam,
     addContact,
     getAchievements,
+    getAchievement,
     getEvents,
+    getEvent,
     getIssues,
     getNotices,
+    getNotice,
     getTeam,
+    getTeamMember,
     getContacts,
     deleteAchievement,
     deleteContact,

@@ -11,6 +11,7 @@
 }
 
 .List {
+    margin-top: 5vh;
     max-height: 50vh;
     overflow: auto;
 }

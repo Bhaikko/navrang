@@ -28,6 +28,13 @@ const reducer = (state = initialState, action) => {
                 token: null,
                 err: action.err 
             }
+
+        case actionTypes.ADMIN_LOGOUT:
+            return {
+                token: null,
+                loading: null,
+                err: null 
+            }
         
         default:
             return state;

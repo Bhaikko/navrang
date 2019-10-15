@@ -1,20 +1,17 @@
 export {
-    getAchievements,
-    getContacts, 
-    getEvents,
-    getIssues,
-    getNotices,
-    getTeam,
     toggleForm,
     changePreview,
-    deleteItem
+    deleteItem,
+    getItem
 } from './dashboard';
 
 export {
-    formSubmit
+    formSubmit,
+    clearForm
 } from './form'
 
 export {
-    loginAttempt
+    loginAttempt,
+    logout
 } from './auth'
 

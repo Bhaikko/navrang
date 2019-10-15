@@ -17,6 +17,7 @@ router.post("/login", (req, res, next) => {
         if(err || !user) {
             return res.status(400).json({
                 message: "INVALID USERNAME or PASSWORD",
+                user: user 
             });
         }
 
@@ -29,7 +30,8 @@ router.post("/login", (req, res, next) => {
             }, TOKEN_SECRET_KEY);
 
             return res.json({
-                token 
+                token,
+                userId: user.id 
             });
         });
     })(req, res, next);
