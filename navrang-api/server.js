@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
+const path = require("path");
 
 const { database } = require("./database/database");
 const { passport } = require("./passport");
@@ -23,12 +24,21 @@ app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static("./public"));
-app.use("/static", express.static("./private/static"))
-app.use("/admin", express.static("./private"));
 app.use("/uploads", express.static("./uploads"));
-
 app.use("/api", api);
+
+app.use(express.static(path.join(__dirname, "public", 'build')));
+app.use(express.static(path.join(__dirname, "private", 'build')));
+
+// app.use("/static", express.static("./private/static"))
+// app.use("/admin", express.static("./private"));
+
+app.get('/admin', function(req, res) {
+    res.sendFile(path.join(__dirname, "private", 'build', 'index.html'));
+});
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, "public", 'build', 'index.html'));
+});
 
 const PORT = 4000;
 database.sync()

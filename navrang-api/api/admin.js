@@ -1,13 +1,17 @@
+const { UPLOADS_DIRECTORY, MAIL_GUN_DOMAIN, MAIL_GUN_API_KEY, TWILIO_ACC_SID, TWILIO_AUTH_TOKEN } = require("./../credentials");
+
 const express = require("express");
 const multer = require("multer");
+const mailgun = require("mailgun-js");
 const fs = require("fs");
+const client = require("twilio")(TWILIO_ACC_SID, TWILIO_AUTH_TOKEN);
 
 const databaseHandler = require("../database"); 
 
-const { UPLOADS_DIRECTORY } = require("./../credentials");
 
 const router = express.Router();
 const upload = multer({ dest: './uploads' });
+const mg = mailgun({apiKey: MAIL_GUN_API_KEY, domain: MAIL_GUN_DOMAIN});
 
 router.post("/achievements", upload.single("files"), (req, res, next) => {
     databaseHandler.addAchievment(
@@ -132,7 +136,37 @@ router.post("/notices", upload.single("files"), (req, res, next) => {
         req.body.date,
         UPLOADS_DIRECTORY + req.file.filename
     )
-        .then(response => res.sendStatus(200))
+        .then(response => {
+            databaseHandler.getContacts()
+            .then(contacts => {
+                contacts.map(contact => {
+                    if (contact.email) {
+                        const data = {
+                            from: "navrang.abhivyakti@gmail.com",
+                            to: contact.email,
+                            subject: "New Notice!!!",
+                            text: `Hi ${contact.name},\n Navrang just posted a new notice related to ${req.body.title} ,\n Checkout ASAP on out site.`
+                        }
+                        mg.messages().send(data, function (error, body){
+                            console.log("Email Sent To " + contact.email)
+                        });
+                    }
+
+                    if(contact.phone) {
+                        client.messages.create({
+                            body:  `Hi ${contact.name},\n Navrang just posted a new notice related to ${req.body.title},\n Checkout ASAP on our site.`,
+                            from: "+18574018262",
+                            to: `+91${contact.phone}`
+                             
+                        })
+                            .then(response => console.log("Message Sent To " + contact.phone))
+                            .catch(err => console.log(err));
+                    }
+                })
+            })
+
+            res.sendStatus(200)
+        })
         .catch(err => res.sendStatus(400));
 });
 
