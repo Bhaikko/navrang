@@ -6,3 +6,10 @@
     flex-wrap: wrap;
     
 }
+
+
+@media (max-width: 540px) {
+    .Notices {
+        flex-direction: column;
+    }
+}

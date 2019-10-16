@@ -6,7 +6,7 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 const navigationItems = (props) => {
     return (
-        <ul className={classes.NavigationItems} style={{marginTop: props.marginTop}}>
+        <ul className={classes.NavigationItems} >
             <NavigationItem link="/events" >Events</NavigationItem>
             <NavigationItem link="/achievements"  >Acheivements</NavigationItem>
             <NavigationItem link="/notices"  >Notices</NavigationItem>

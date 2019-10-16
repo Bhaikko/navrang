@@ -28,3 +28,10 @@
     text-align: center;
 }
 
+
+@media (max-width: 540px) {
+    .Achievement {
+        width: 70%;
+    }
+}
+

@@ -37,3 +37,15 @@
     }
 }
 
+@media (max-width: 540px) {
+    .GroupImageContainer {
+        height: 50vh;
+    }
+
+    .Typing {
+        padding-top: 10vh;
+        font-size: 20px; 
+    }
+}
+
+

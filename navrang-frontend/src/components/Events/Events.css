@@ -5,3 +5,9 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+@media (max-width: 540px) {
+    .Events {
+        flex-direction: column;
+    }
+}

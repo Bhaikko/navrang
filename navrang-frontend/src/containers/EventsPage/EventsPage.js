@@ -32,7 +32,6 @@ constructor (props) {
     }
 
     render () {
-        console.log(this.state.events);
         if (this.state.loading) {
             return <Spinner />
         }

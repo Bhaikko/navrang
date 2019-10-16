@@ -59,7 +59,7 @@ const input = (props) => {
                             onChange={props.changed}
                         />
                     </div>
-                    <Button style={{fontSize: "10px"}} onClick={fileHandler}>{props.elementConfig.uploadinfo}</Button>
+                    <Button inline="true" style={{fontSize: "10px"}} onClick={fileHandler}>{props.elementConfig.uploadinfo}</Button>
                 </div>
             );
                 

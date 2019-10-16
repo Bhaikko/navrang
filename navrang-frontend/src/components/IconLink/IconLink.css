@@ -11,3 +11,11 @@
 .Contact {
     width: 100%;
 }
+
+@media (max-width: 540px) {
+    .ContactContainer {
+        width: 40%;
+        margin-right: 20px;
+    }
+}
+

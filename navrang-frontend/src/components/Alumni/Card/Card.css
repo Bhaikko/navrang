@@ -41,3 +41,10 @@
     margin-top: 5px;
     font-size: 16px;
 }
+
+@media (max-width: 540px) {
+    .Card {
+        width: 80%;
+    }
+}
+

@@ -131,7 +131,7 @@ class Form extends Component {
                         shouldValidate={formElement.config.validation}
                         touched={formElement.config.touched} />
                 ))}
-                <Button disabled={!this.state.formIsValid} onClick={this.formSubmitHandler} >{this.props.noAdd ? "" : "Add"} {this.props.formName}</Button>
+                <Button inline="true" disabled={!this.state.formIsValid} onClick={this.formSubmitHandler} >{this.props.noAdd ? "" : "Add"} {this.props.formName}</Button>
             </form>
         );
                     

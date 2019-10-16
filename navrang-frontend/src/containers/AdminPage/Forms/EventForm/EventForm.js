@@ -46,12 +46,10 @@ class EventForm extends Component {
                     valid: false,
                     touched: false 
                 },
-                file: {
-                    elementType: "file",
+                info: {
+                    elementType: "textarea",
                     elementConfig: {
-                        type: "file",
-                        // accept: "image/*",
-                        uploadinfo: "Image Related To Event"
+                        placeholder: "About The Event... \n Event Details, Venue, Timings"
                     },
                     value: "",
                     validation: {
@@ -60,10 +58,12 @@ class EventForm extends Component {
                     valid: false,
                     touched: false 
                 },
-                info: {
-                    elementType: "textarea",
+                file: {
+                    elementType: "file",
                     elementConfig: {
-                        placeholder: "About The Event... \n Event Details, Venue, Timings"
+                        type: "file",
+                        // accept: "image/*",
+                        uploadinfo: "Image Related To Event"
                     },
                     value: "",
                     validation: {

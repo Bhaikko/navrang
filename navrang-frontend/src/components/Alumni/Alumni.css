@@ -8,3 +8,10 @@
     transform: translateY(60px);
     transition: 1s;
 }
+
+@media (max-width: 540px) {
+    .Alumni {
+        flex-direction: column;
+    }
+}
+

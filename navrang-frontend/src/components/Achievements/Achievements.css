@@ -9,3 +9,11 @@
     transition: 1s;
 }
 
+
+@media (max-width: 540px) {
+    .Achievements {
+        flex-direction: column;
+        flex: 1;
+    }
+}
+

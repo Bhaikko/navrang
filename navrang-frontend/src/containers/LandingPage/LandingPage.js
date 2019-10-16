@@ -12,18 +12,16 @@ import Container from './../../components/UI/SectionContainer/Container';
 import Title from './../../components/UI/Title/Title';
 import Button from './../../components/UI/Button/Button';
 
-
-import classes from './LandingPage.css';
-
+import withErrorHandler from './../../hoc/withErrorHandler/withErrorHandler';
 import axios from './../../axios';
 
+import classes from './LandingPage.css';
 import Spinner from './../../components/UI/Spinner/Spinner';
 
 class LandingPage extends Component {
 
     constructor (props) {
         super(props);
-
         this.state = {
             loading: true,
             alumni: null,
@@ -78,4 +76,4 @@ class LandingPage extends Component {
     }
 }
 
-export default LandingPage;
+export default withErrorHandler(LandingPage, axios);

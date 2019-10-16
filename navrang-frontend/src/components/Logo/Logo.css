@@ -9,3 +9,10 @@
 .Logo img {
     height: 100%;
 }
+
+@media (max-width: 540px) {
+    .Logo {
+        /* align-content: center; */
+        margin-left: 30%;
+    }
+}

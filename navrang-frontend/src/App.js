@@ -15,11 +15,11 @@ class App extends Component {
 
     let routes = (
       <Switch>
-        <Route path="/" exact component={LandingPage} />
         <Route path="/achievements" component={AchievementsPage} />
         <Route path="/alumni" component={AlumniPage} />
         <Route path="/events" component={EventsPage} />
         <Route path="/notices" component={NoticesPage} />
+        <Route path="/" component={LandingPage} />
       </Switch>
     );
     

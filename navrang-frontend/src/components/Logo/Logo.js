@@ -12,9 +12,16 @@ const logo = (props) => {
             className={classes.Logo}
             style={{
                 height: props.height,
-                marginBottom: props.margin || "0px" 
+                marginBottom: props.margin || "0px",
+                
             }} >
-            <img src={Logo} alt="navrang" />
+            <img 
+                src={Logo} 
+                alt="navrang"
+                style={{
+                    height: props.height 
+                }} 
+            />
         </Link>
     );
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Logo from './../../Logo/Logo';
 import NavigationItems from './../NavigationItems/NavigationItems';
+import DrawerToggle from './../SideDrawer/DrawerToggle/DrawerToggle';
 
 import classes from './Toolbar.css';
 
@@ -13,7 +14,6 @@ class Toolbar extends Component {
             styles: {
                 backgroundColor: "transparent",
                 height: "56px",
-                navItemsMarginTop: "5%"
             },
             bChanged: false 
         } 
@@ -32,7 +32,6 @@ class Toolbar extends Component {
                     newStyle = {
                         backgroundColor: "white",
                         height: "70px",
-                        navItemsMarginTop: "7%"
                     }
                     this.setState({ styles: newStyle, bChanged: true });
                 }
@@ -41,7 +40,6 @@ class Toolbar extends Component {
                     newStyle = {
                         backgroundColor: "transparent",
                         height: "56px",
-                        navItemsMarginTop: "5%"
                     
                     }
                     this.setState({ styles: newStyle, bChanged: false});
@@ -61,9 +59,11 @@ class Toolbar extends Component {
     render () {
         return (
             <header className={classes.Toolbar} style={this.state.styles}>    
+                <DrawerToggle clicked={this.props.drawerToggleClicked} />
+                
                 <Logo height="80%" />
                 <nav className={classes.DesktopOnly} >
-                    <NavigationItems marginTop={this.state.styles.navItemsMarginTop}/>
+                    <NavigationItems />
                 </nav>
     
             </header>

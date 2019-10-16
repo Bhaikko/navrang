@@ -6,23 +6,7 @@ import groupImagePhoto from './../../assets/images/groupImage.jpeg';
 
 const GroupImage = (props) => {
 
-    const textWriter = () => {
-        const textElement = document.getElementById("text");
-        const text = textElement.innerHTML;
-        textElement.innerHTML = "";
-        let index = 0;
-        const textInterval = setInterval(() => {
-            textElement.innerHTML += text[index];
-            index++;
-            if(text[index] === "\\") {
-                textElement.innerHTML += "<br />";
-                index++;
-            }
-            if(index === text.length) {
-                clearInterval(textInterval);
-            }
-        } , 250);
-    }
+    
 
     const parallaxEffect = () => {
         const parallax = document.getElementById("parallax");
@@ -37,13 +21,31 @@ const GroupImage = (props) => {
     
     
     useEffect(() => {
+        const textWriter = () => {
+            const textElement = document.getElementById("text");
+            const text = textElement.innerHTML;
+            textElement.innerHTML = "";
+            let index = 0;
+            const textInterval = setInterval(() => {
+                textElement.innerHTML += text[index];
+                index++;
+                if(text[index] === "\\") {
+                    textElement.innerHTML += "<br />";
+                    index++;
+                }
+                if(index === text.length) {
+                    clearInterval(textInterval);
+                }
+            } , 250);
+        }
         textWriter();
         parallax();
 
         return () => {
             window.removeEventListener("scroll", parallaxEffect);
         }
-    });
+        // eslint-disable-next-line
+    }, []);
     
 
     return (
