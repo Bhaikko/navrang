@@ -30,9 +30,6 @@ app.use("/api", api);
 app.use(express.static(path.join(__dirname, "public", 'build')));
 app.use(express.static(path.join(__dirname, "private", 'build')));
 
-// app.use("/static", express.static("./private/static"))
-// app.use("/admin", express.static("./private"));
-
 app.get('/admin', function(req, res) {
     res.sendFile(path.join(__dirname, "private", 'build', 'index.html'));
 });

@@ -8,8 +8,10 @@ import Button from './../../../components/UI/Button/Button';
 const Notice = props => {
     return (
         <div className={classes.Notice}>
-            <Title>{props.title}</Title>
-            <div className={classes.Date} >{props.date}</div>
+            <div className={classes.DetailContainer} >
+                <Title>{props.title}</Title>
+                <div className={classes.Date} >{props.date}</div>
+            </div>
             <Button onClick={() => props.showModal(props.id)}>View</Button>
         </div>
     );
