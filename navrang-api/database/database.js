@@ -1,24 +1,23 @@
 const Sequelize = require("sequelize");
-const { DATABASE_USERNAME, DATABASE_NAME, DATABASE_PASSWORD } = require("./../credentials");
+// const { DATABASE_USERNAME, DATABASE_NAME, DATABASE_PASSWORD } = require("./../credentials");
 
-const database = new Sequelize(DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD, {
-    host: "localhost",
-    dialect: "mysql",
-    logging: false 
-});
+let database;
+
+if (process.env.MODE === "PRODUCTION") {
+    // postgres setup
+} else {
+    database = new Sequelize({
+        dialect: 'sqlite',
+        storage: './database.sqlite',
+        logging: false
+    });
+}
 
 
 const Admins = database.define("admins", {
     username: {
         type: Sequelize.STRING,
-        unique: {
-            args: true,
-            msg: "Username Already Exists"
-        },
-        allowNull: {
-            args: false,
-            msg: "Required"
-        }
+        allowNull: false
     },
     password: {
         type: Sequelize.STRING,
@@ -62,7 +61,11 @@ const Events = database.define("events", {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    imageLink: {
+    imageUrl: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    imagePublicId: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -93,6 +96,10 @@ const Achievements = database.define("achievements", {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    imagePublicId: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 });
 
 const Team = database.define("team", {
@@ -112,9 +119,13 @@ const Team = database.define("team", {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    imageLink: {
+    imageUrl: {
         type: Sequelize.STRING,
         allowNull: false 
+    },
+    imagePublicId: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 });
 
@@ -139,9 +150,13 @@ const Notices = database.define("notices", {
         type: Sequelize.DATE,
         allowNull: false,
     },
-    fileLink: {
+    fileUrl: {
         type: Sequelize.STRING,
     },
+    filePublicId: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 });
 
 const Contacts = database.define("contacts", {

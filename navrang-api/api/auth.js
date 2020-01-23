@@ -16,8 +16,7 @@ router.post("/login", (req, res, next) => {
     passport.authenticate("admin", { session: false }, (err, user, info) => {
         if(err || !user) {
             return res.status(400).json({
-                message: "INVALID USERNAME or PASSWORD",
-                user: user 
+                message: "INVALID USERNAME or PASSWORD"
             });
         }
 

@@ -1,15 +1,11 @@
 const { Achievements, Issues, Events, Team, Notices, Contacts } = require("./database");
 
-const { databaseParser } = require("./utility");
-
 const getTeamByDesignation = (designation) => {
     return Team.findOne({
         where: {
             designation
         }
-    })
-        .then(member => member)
-        .catch(err => err);
+    });
 }
 
 const getFrontPageData = () => {
@@ -18,9 +14,7 @@ const getFrontPageData = () => {
         getTeamByDesignation("Vice President"),
         getTeamByDesignation("Counsellor"),
         getAchievements(3)
-    ])
-        .then(response => response)
-        .catch(console.log);
+    ]);
 }
 
 const getAchievements = (limit) => {
@@ -29,9 +23,7 @@ const getAchievements = (limit) => {
             ["title", "ASC"]
         ],
         limit: limit ? limit : 1000
-    })
-        .then(achievements => databaseParser(achievements))
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 const getAchievement = id => {
@@ -40,21 +32,18 @@ const getAchievement = id => {
         where: {
             id
         }
-    })
-        .then(achievement => achievement)
-        .catch(console.log);
+    });
 }
 
-const addAchievment = (title, subtitle, content, date, imageUrl) => {
+const addAchievment = (title, subtitle, content, date, imageUrl, imagePublicId) => {
     return Achievements.create({
         title,
         subtitle,
         content,
         date,
-        imageUrl 
-    })
-        .then(achievement => achievement)
-        .catch(err => { throw new Error(err) });
+        imageUrl,
+        imagePublicId 
+    });
 }
 
 const deleteAchievement = (id) => {
@@ -62,9 +51,7 @@ const deleteAchievement = (id) => {
         where: {
             id
         }
-    })
-        .then(response => response)
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 const getIssues = () => {
@@ -72,9 +59,7 @@ const getIssues = () => {
         order: [
             ["senderName", "ASC"]
         ]
-    })
-        .then(issues => databaseParser(issues))
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 
@@ -84,9 +69,7 @@ const addIssue = (senderName, senderEmail, content, date) => {
         senderEmail,
         content,
         date  
-    })
-        .then(issue => issue)
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 const deleteIssue = (id) => {
@@ -94,9 +77,7 @@ const deleteIssue = (id) => {
         where: {
             id 
         }
-    })
-        .then(response => response)
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 const getEvent = id => {
@@ -104,9 +85,7 @@ const getEvent = id => {
         where: {
             id
         }
-    })
-        .then(event => event)
-        .catch(console.log);
+    });
 }
 
 
@@ -115,21 +94,18 @@ const getEvents = () => {
         order: [
             ["name", "ASC"]
         ]
-    })
-        .then(events => databaseParser(events))
-        .catch(err => { throw new Error(err) });
+    });
 }
 
-const addEvent = (name, lastDate, registrationLink, imageLink, info) => {
+const addEvent = (name, lastDate, registrationLink, imageLink, info, imagePublicId) => {
     return Events.create({
         name,
         lastDate,
         registrationLink,
         imageLink,
-        info
-    })
-        .then(event => event)
-        .catch(err => { throw new Error(err) });
+        info,
+        imagePublicId
+    });
 }
 
 const deleteEvent = (id) => {
@@ -137,9 +113,7 @@ const deleteEvent = (id) => {
         where: {
             id 
         }
-    })
-        .then(response => response)
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 const getTeamMember = id => {
@@ -147,28 +121,23 @@ const getTeamMember = id => {
         where: {
             id
         }
-    })
-        .then(team => team)
-        .catch(console.log);
+    });
 }
 
 
 const getTeam = () => {
-    return Team.findAll()
-        .then(team => databaseParser(team))
-        .catch(err => { throw new Error(err) });
+    return Team.findAll();
 }
 
-const addTeam = (name, designation, about, contactLink, imageLink) => {
+const addTeam = (name, designation, about, contactLink, imageLink, imagePublicId) => {
     return Team.create({
         name, 
         designation,
         about, 
         contactLink,
-        imageLink
-    })
-        .then(team => team)
-        .catch(err => { throw new Error(err) });
+        imageLink,
+        imagePublicId
+    });
 }
 
 const deleteTeam = (id) => {
@@ -176,9 +145,7 @@ const deleteTeam = (id) => {
         where: {
             id 
         }
-    })
-        .then(response => response)
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 const getNotice = id => {
@@ -187,9 +154,7 @@ const getNotice = id => {
         where: {
             id
         }
-    })
-        .then(notice => notice)
-        .catch(console.log);
+    });
 }
 
 
@@ -198,22 +163,19 @@ const getNotices = () => {
         order: [
             ["title", "ASC"]
         ]
-    })
-        .then(notices => databaseParser(notices))
-        .catch(err => { throw new Error(err) });
+    });
 }
 
-const addNotice = (title, content, name, designation, date, fileLink) => {
+const addNotice = (title, content, name, designation, date, fileLink, filePublicId) => {
     return Notices.create({
         title,
         content,
         name,
         designation,
         date,
-        fileLink 
-    })
-        .then(notice => notice)
-        .catch(err => { throw new Error(err) });
+        fileLink,
+        filePublicId 
+    });
 }
 
 const deleteNotice = (id) => {
@@ -221,9 +183,7 @@ const deleteNotice = (id) => {
         where: {
             id 
         }
-    })
-        .then(response => response)
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 const getContacts = () => {
@@ -231,9 +191,7 @@ const getContacts = () => {
         order: [
             ["name", "ASC"]
         ]
-    })
-        .then(contacts => databaseParser(contacts))
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 const addContact = (name, phone, email) => {
@@ -241,9 +199,7 @@ const addContact = (name, phone, email) => {
         name,
         phone,
         email  
-    })
-        .then(contacts => contacts)
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 const deleteContact = (id) => {
@@ -251,9 +207,7 @@ const deleteContact = (id) => {
         where: {
             id 
         }
-    })
-        .then(response => response)
-        .catch(err => { throw new Error(err) });
+    });
 }
 
 

@@ -27,7 +27,7 @@ router.get("/front", (req, res, next) => {
     databaseHandler.getFrontPageData()
         .then(data => res.send(data))
         .catch(err => res.sendStatus(400));
-})
+});
 
 router.get("/team", (req, res, next) => {
     databaseHandler.getTeam()
@@ -47,11 +47,24 @@ router.get("/contacts", (req, res, next) => {
         .catch(err => res.sendStatus(400));
 });
 
-router.post("/issues", (req, res) => {
-    databaseHandler.addIssue(req.body.name, req.body.email, req.body.message, new Date())
-        .then(() => res.sendStatus(200))
-        .catch(err => res.sendStatus(400));
-})
+router.post("/issues", (req, res, next) => {
+    databaseHandler.addIssue(
+        req.body.senderName,
+        req.body.senderEmail,
+        req.body.content,
+        req.body.date
+    )
+        .then(response => {
+            res.status(201).json({
+                message: "Thank you for reaching out us. We'll try to reach you as soon as Possible."
+            });
+        })
+        .catch(err => {
+            res.status(400).json({
+                message: "Something Went wrong."
+            });
+        });
+});
 
 module.exports = {
     router
