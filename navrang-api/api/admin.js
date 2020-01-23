@@ -10,16 +10,42 @@ const router = express.Router();
 // const mg = mailgun({apiKey: MAIL_GUN_API_KEY, domain: MAIL_GUN_DOMAIN});
 
 const errorHandler = (res, err) => {
+    console.log(err);
     res.status(400).json({
         message: "Something Went Wrong"
     });
 }
 
 const responseHandler = (res, message) => {
-    res.status(200).json({
+    res.status(201).json({
         message: message
     });
 }
+
+router.get("/issues", (req, res, next) => {
+    databaseHandler.getIssues()
+        .then(response => {
+            res.status(200).json({
+                issues: response
+            });
+        })
+        .catch(err => {
+            errorHandler(res, err);
+        });
+});
+
+
+router.get("/contacts", (req, res, next) => {
+    databaseHandler.getContacts()
+        .then(response => {
+            res.status(200).json({
+                conracts: response
+            });
+        })
+        .catch(err => {
+            errorHandler(res, err);
+        });
+});
 
 router.post("/achievements", (req, res, next) => {
     databaseHandler.addAchievment(

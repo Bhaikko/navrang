@@ -11,12 +11,6 @@ router.get("/achievements", (req, res, next) => {
 });
 
 
-router.get("/issues", (req, res, next) => {
-    databaseHandler.getIssues()
-        .then(issues => res.send(issues))
-        .catch(err => res.sendStatus(400));
-});
-
 router.get("/events", (req, res, next) => {
     databaseHandler.getEvents()
         .then(events => res.send(events))
@@ -41,18 +35,13 @@ router.get("/notices", (req, res, next) => {
         .catch(err => res.sendStatus(400));
 });
 
-router.get("/contacts", (req, res, next) => {
-    databaseHandler.getContacts()
-        .then(contacts => res.send(contacts))
-        .catch(err => res.sendStatus(400));
-});
 
 router.post("/issues", (req, res, next) => {
     databaseHandler.addIssue(
         req.body.senderName,
         req.body.senderEmail,
         req.body.content,
-        req.body.date
+        new Date()
     )
         .then(response => {
             res.status(201).json({

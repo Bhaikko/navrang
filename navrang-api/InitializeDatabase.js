@@ -1,8 +1,4 @@
-// This file is likely to be remove in production. 
-// It is only added to add data to database
-
 const { 
-    database,
     Admins,
     Issues,
     Achievements,
