@@ -9,8 +9,7 @@ const initialState = {
     currentForm: null 
 }
 
-const reducer = (state = initialState, action) => {
-    
+const reducer = (state = initialState, action) => {    
     switch (action.type) {
         case actionTypes.CHANGE_DATA_BEGIN:
             return {

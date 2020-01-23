@@ -5,10 +5,18 @@ import AdminPage from './containers/AdminPage/AdminPage';
 import AdminLogin from './containers/AdminLoginPage/AdminLogin';
 import Layout from './hoc/Layout/Layout';
 
-
 import Spinner from './components/UI/Spinner/Spinner';
+import * as actions from './store/action/index';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    const token = localStorage.getItem("token");
+    if (token) {
+      this.props.onAutoLogin(token);
+    }
+  }
 
   render () {
     let currentPage = this.props.token ? 
@@ -40,4 +48,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = dispatch => {
+  return {
+    onAutoLogin: token => dispatch(actions.autoLogin(token))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

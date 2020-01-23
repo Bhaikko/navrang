@@ -1,6 +1,13 @@
 import * as actionTypes from './actionTypes';
 import axios from './../../axios';
 
+export const autoLogin = (token) => {
+    return {
+        type: actionTypes.AUTH_SUCCESS,
+        token: token
+    };
+}
+
 export const loginAttempt = (formData) => {
     return dispatch => {
         dispatch({

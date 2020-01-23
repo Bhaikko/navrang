@@ -26,7 +26,7 @@ class AdminPage extends Component {
         switch (this.props.currentSetting) {
             case "events": 
                 currentPreview =  (<EventCard 
-                    imageUrl={this.props.data[index].imageLink}
+                    imageUrl={this.props.data[index].imageUrl}
                     link={this.props.data[index].registrationLink}
                     info={this.props.data[index].info}
                     date={this.props.data[index].lastDate}
@@ -46,7 +46,7 @@ class AdminPage extends Component {
                 break;
             case "team": 
                 currentPreview = (<TeamCard 
-                    imageUrl={this.props.data[index].imageLink}
+                    imageUrl={this.props.data[index].imageUrl}
                     about={this.props.data[index].about}
                     name={this.props.data[index].name}
                     designation={this.props.data[index].designation}
@@ -70,7 +70,7 @@ class AdminPage extends Component {
                     content={this.props.data[index].content}
                     name={this.props.data[index].name}
                     designation={this.props.data[index].designation}
-                    files={this.props.data[index].fileLink}
+                    files={this.props.data[index].fileUrl}
                 />);
                 this.props.onChangePreview(currentPreview);   
             
@@ -122,22 +122,20 @@ class AdminPage extends Component {
                             <Button inline="true" style={{fontSize: "15px", padding: "10px"}} onClick={this.newFormHandler} disabled={this.props.currentSetting === "issues" ? true : false}>+</Button>
                         </div>
                         <hr />
-                        {
-                            this.props.bAdding ?
-                                (
-                                    <div className={classes.Form}>
-                                        {this.props.formLoading ? <Spinner /> : this.props.currentForm}
-                                    </div>
-                                ) : (
-                                    <div className={classes.List}>
-                                        <List data={this.props.data}
-                                            changeSelected={this.selectedDataHandler}
-                                            deleteSelected={this.deleteHandler}
-                                            setting={this.props.currentSetting}
-                                        />
-                                    </div>
-                                ) 
-                        }
+                        {this.props.bAdding ? (
+                            <div className={classes.Form}>
+                                {this.props.formLoading ? <Spinner /> : this.props.currentForm}
+                            </div>
+                        ) : (
+                            <div className={classes.List}>
+                                <List 
+                                    data={this.props.data}
+                                    changeSelected={this.selectedDataHandler}
+                                    deleteSelected={this.deleteHandler}
+                                    setting={this.props.currentSetting}
+                                />
+                            </div>
+                        )}
 
                     </div>
                     <div className={classes.RightSection}>
@@ -145,16 +143,13 @@ class AdminPage extends Component {
                             <Title style={{display: "inline-block"}}>Preview</Title>
                             <hr />
                             <div className={classes.Preview}>
-                                {this.props.currentPreview ? 
-                                    (
-                                        <div>
-                                            {this.props.currentPreview}
-                                        </div>
-                                    ) :
-                                    (
-                                        <div>Please Select An Item To Preview</div>
-                                    )
-                                }
+                                {this.props.currentPreview ? (
+                                    <div>
+                                        {this.props.currentPreview}
+                                    </div>
+                                ) : (
+                                   <div>Please Select An Item To Preview</div>
+                                )}
                             </div>
                         </div>
                     </div>

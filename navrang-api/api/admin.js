@@ -39,7 +39,7 @@ router.get("/contacts", (req, res, next) => {
     databaseHandler.getContacts()
         .then(response => {
             res.status(200).json({
-                conracts: response
+                contacts: response
             });
         })
         .catch(err => {

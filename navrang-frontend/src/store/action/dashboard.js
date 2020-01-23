@@ -40,18 +40,41 @@ export const getItem = (setting) => {
             
         }
 
-        axios.get(`/public/${setting}`)
-            .then(response => dispatch({
-                type: actionTypes.CHANGE_DATA,
-                data: response.data,
-                setting: setting,
-                currentForm: currentForm
-            }))
-            .catch(err => dispatch({
-                type: actionTypes.CHANGE_DATA_FAILED,
-                data: null,
-                setting: setting
-            }));
+        if (setting === "issues" || setting === "contacts") {
+            const token = localStorage.getItem("token");;
+            axios.get(`/admin/${setting}`, {
+                headers: {
+                    Authorization: `JWT ${token}`
+                }
+            })
+                .then(response => dispatch({
+                    type: actionTypes.CHANGE_DATA,
+                    data: response.data[setting],
+                    setting: setting,
+                    currentForm: currentForm
+                }))
+                .catch(err => dispatch({
+                    type: actionTypes.CHANGE_DATA_FAILED,
+                    data: null,
+                    setting: setting
+                }));
+
+        } else {
+
+            axios.get(`/public/${setting}`)
+                .then(response => dispatch({
+                    type: actionTypes.CHANGE_DATA,
+                    data: response.data,
+                    setting: setting,
+                    currentForm: currentForm
+                }))
+                .catch(err => dispatch({
+                    type: actionTypes.CHANGE_DATA_FAILED,
+                    data: null,
+                    setting: setting
+                }));
+        }
+
     }
 }
 

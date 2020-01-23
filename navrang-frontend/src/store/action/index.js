@@ -12,6 +12,7 @@ export {
 
 export {
     loginAttempt,
-    logout
+    logout,
+    autoLogin
 } from './auth'
 
