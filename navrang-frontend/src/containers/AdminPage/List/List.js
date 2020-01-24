@@ -21,7 +21,7 @@ class List extends Component {
 
     render () {
         let filteredData = this.props.data.filter(current => ((current.title || current.name || current.senderName).toLowerCase()).includes(this.state.searchQuery.toLowerCase()))
-
+        
         return (
             <div>
                 <input value={this.state.searchQuery} onChange={this.serachHandler} className={classes.Input} placeholder="Search Here " />
@@ -29,9 +29,10 @@ class List extends Component {
                 <div className={classes.List}>
                     {filteredData.map((current, index) => <ListItem 
                         key={current.id} 
+                        publicId={current.public_id}
                         title={current.title || current.name || current.senderName} 
                         changeSelected={() => this.props.changeSelected(index)}
-                        deleteSelected={() => this.props.deleteSelected(current.id, this.props.setting)}
+                        deleteSelected={() => this.props.deleteSelected(current.id, this.props.setting, current.imagePublicId)}
                     > </ListItem>)}
 
                 </div>

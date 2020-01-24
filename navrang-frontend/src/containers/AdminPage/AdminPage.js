@@ -103,10 +103,6 @@ class AdminPage extends Component {
         this.props.onClearForm();
     }
 
-    deleteHandler = (id, currentSetting) => {
-        this.props.onDeletePreview(id, currentSetting);
-    }
-
     render () {
         let content = <Spinner />
 
@@ -131,7 +127,7 @@ class AdminPage extends Component {
                                 <List 
                                     data={this.props.data}
                                     changeSelected={this.selectedDataHandler}
-                                    deleteSelected={this.deleteHandler}
+                                    deleteSelected={this.props.onDeletePreview}
                                     setting={this.props.currentSetting}
                                 />
                             </div>
@@ -186,7 +182,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onToggleForm: (currentFormState) => dispatch(actions.toggleForm(currentFormState)),
         onChangePreview: (currentPreview) => dispatch(actions.changePreview(currentPreview)),
-        onDeletePreview: (id, setting) => dispatch(actions.deleteItem(id, setting)),
+        onDeletePreview: (id, setting, imagePublicId) => dispatch(actions.deleteItem(id, setting, imagePublicId)),
         onGetItem: (setting) => dispatch(actions.getItem(setting)),
         onClearForm: () => dispatch(actions.clearForm())
     }

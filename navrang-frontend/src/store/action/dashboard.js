@@ -60,14 +60,15 @@ export const getItem = (setting) => {
                 }));
 
         } else {
-
             axios.get(`/public/${setting}`)
-                .then(response => dispatch({
-                    type: actionTypes.CHANGE_DATA,
-                    data: response.data,
-                    setting: setting,
-                    currentForm: currentForm
-                }))
+                .then(response => {
+                    dispatch({
+                        type: actionTypes.CHANGE_DATA,
+                        data: response.data,
+                        setting: setting,
+                        currentForm: currentForm
+                    });
+                })
                 .catch(err => dispatch({
                     type: actionTypes.CHANGE_DATA_FAILED,
                     data: null,
@@ -78,7 +79,7 @@ export const getItem = (setting) => {
     }
 }
 
-export const deleteItem = (id, setting) => {
+export const deleteItem = (id, setting, public_id) => {
     return dispatch => {
         dispatch({
             type: actionTypes.DELETE_ENTRY_INIT
@@ -86,9 +87,13 @@ export const deleteItem = (id, setting) => {
 
         const token = localStorage.getItem("token");
 
-        axios.delete(`/admin/${setting}/${id}`, {
+        axios.delete(`/admin/${setting}`, {
             headers: {
                 Authorization: `JWT ${token}`
+            },
+            data: {
+                id: id,
+                public_id: public_id
             }
         })
             .then(response => dispatch({

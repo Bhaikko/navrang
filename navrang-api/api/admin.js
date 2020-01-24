@@ -85,9 +85,12 @@ router.post("/achievements", upload.single("files"), (req, res, next) => {
 });
 
 router.delete("/achievements", (req, res, next) => {
-    databaseHandler.deleteAchievement(req.body.id)
-        .then(response => {
-            responseHandler(res, "Achievement Deleted Successfully");
+    cloudinary.uploader.destroy(req.body.public_id)
+        .then(() => {
+            databaseHandler.deleteAchievement(req.body.id)
+                .then(response => {
+                    responseHandler(res, "Achievement Deleted Successfully");
+                });
         })
         .catch(err => {
             errorHandler(res, err);
@@ -129,9 +132,12 @@ router.post("/events", upload.single("files"), (req, res, next) => {
 });
 
 router.delete("/events", (req, res, next) => {
-    databaseHandler.deleteEvent(req.body.id)
-        .then(response => {
-            responseHandler(res, "Event Deleted Successfully.");
+    cloudinary.uploader.destroy(req.body.public_id)
+        .then(() => {
+            databaseHandler.deleteEvent(req.body.id)
+                .then(response => {
+                    responseHandler(res, "Event Deleted Successfully.");
+                });
         })
         .catch(err => {
             errorHandler(res, err);
@@ -163,9 +169,12 @@ router.post("/team", upload.single("files"), (req, res, next) => {
 });
 
 router.delete("/team", (req, res, next) => {
-    databaseHandler.deleteTeam(req.body.id)
-        .then(response => {
-            responseHandler(res, "Team Member Deleted Successfully");
+    cloudinary.uploader.destroy(req.body.public_id)
+        .then(() => {
+            databaseHandler.deleteTeam(req.body.id)
+                .then(response => {
+                    responseHandler(res, "Team Member Deleted Successfully");
+                })
         })
         .catch(err => {
             errorHandler(res, err);
@@ -198,10 +207,12 @@ router.post("/notices", upload.single("files"), (req, res, next) => {
 });
 
 router.delete("/notices", (req, res, next) => {
-
-    databaseHandler.deleteNotice(req.body.id)
-        .then(response => {
-            responseHandler(res, "Notice Deleted Successfully");
+    cloudinary.uploader.destroy(req.body.public_id)
+        .then(() => {
+            databaseHandler.deleteNotice(req.body.id)
+                .then(response => {
+                    responseHandler(res, "Notice Deleted Successfully");
+                });
         })
         .catch(err => {
             errorHandler(res, err);
