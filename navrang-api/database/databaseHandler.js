@@ -97,12 +97,12 @@ const getEvents = () => {
     });
 }
 
-const addEvent = (name, lastDate, registrationLink, imageLink, info, imagePublicId) => {
+const addEvent = (name, lastDate, registrationLink, imageUrl, info, imagePublicId) => {
     return Events.create({
         name,
         lastDate,
         registrationLink,
-        imageLink,
+        imageUrl,
         info,
         imagePublicId
     });
@@ -129,13 +129,13 @@ const getTeam = () => {
     return Team.findAll();
 }
 
-const addTeam = (name, designation, about, contactLink, imageLink, imagePublicId) => {
+const addTeam = (name, designation, about, contactLink, imageUrl, imagePublicId) => {
     return Team.create({
         name, 
         designation,
         about, 
         contactLink,
-        imageLink,
+        imageUrl,
         imagePublicId
     });
 }
@@ -166,14 +166,14 @@ const getNotices = () => {
     });
 }
 
-const addNotice = (title, content, name, designation, date, fileLink, filePublicId) => {
+const addNotice = (title, content, name, designation, date, fileUrl, filePublicId) => {
     return Notices.create({
         title,
         content,
         name,
         designation,
         date,
-        fileLink,
+        fileUrl,
         filePublicId 
     });
 }

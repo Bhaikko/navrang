@@ -63,7 +63,7 @@ class AchievementForm extends Component {
                     elementType: "file",
                     elementConfig: {
                         type: "file",
-                        accept: "image/*",
+                        // accept: "image/*",
                         uploadinfo: "Image Related To Achievement"
                     },
                     value: "",

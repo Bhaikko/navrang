@@ -62,7 +62,6 @@ class EventForm extends Component {
                     elementType: "file",
                     elementConfig: {
                         type: "file",
-                        // accept: "image/*",
                         uploadinfo: "Image Related To Event"
                     },
                     value: "",

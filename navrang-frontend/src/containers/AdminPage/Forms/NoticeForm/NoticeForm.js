@@ -76,7 +76,7 @@ class NoticeForm extends Component {
                     elementType: "file",
                     elementConfig: {
                         type: "file",
-                        accept: "image/*, .pdf, .doc",
+                        // accept: "image/*, .pdf, .doc",
                         uploadinfo: "File Related To Notice"
                     },
                     value: "",

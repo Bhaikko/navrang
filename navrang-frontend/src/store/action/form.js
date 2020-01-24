@@ -14,6 +14,12 @@ export const formSubmit = (formData, url) => {
             fd.append(key, formData[key]);
         }       
         const token = localStorage.getItem("token");
+
+        // console.log(formData);
+        if (url === '/admin/contacts') {
+            fd = formData;
+        }
+
         axios.post(url, fd, {
             headers: {
                 Authorization: `JWT ${token}`

@@ -6,7 +6,7 @@ const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 
 const { Admins } = require("./database/database");
-const { TOKEN_SECRET_KEY } = require("./credentials");
+const { TOKEN_SECRET_KEY } = require("./environments");
 
 passport.use("admin", new LocalStrategy({
     usernameField: "username",

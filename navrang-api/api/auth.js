@@ -2,7 +2,7 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 
 const passport = require("./../passport").passport;
-const { TOKEN_SECRET_KEY } = require("./../credentials");
+const { TOKEN_SECRET_KEY } = require("./../environments");
 
 const router = express.Router();
 
