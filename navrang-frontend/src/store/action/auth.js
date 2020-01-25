@@ -10,7 +10,6 @@ export const autoLogin = (token) => {
 
 export const loginAttempt = (formData) => {
     return dispatch => {
-        console.log(formData);
         dispatch({
             type: actionTypes.AUTH_INIT
         });

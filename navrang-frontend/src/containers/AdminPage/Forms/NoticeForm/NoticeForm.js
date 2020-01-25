@@ -49,7 +49,7 @@ class NoticeForm extends Component {
                 content: {
                     elementType: "textarea",
                     elementConfig: {
-                        placeholder: "About The Achievement..."
+                        placeholder: "Notice Details..."
                     },
                     value: "",
                     validation: {

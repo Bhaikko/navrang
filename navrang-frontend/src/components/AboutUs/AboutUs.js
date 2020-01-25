@@ -10,12 +10,9 @@ const aboutUs = (props) => {
         <Container id={props.id}>
             <Title>About Us</Title>
             <p className={classes.AboutUs}>
-                What is Lorem Ipsum? <br/>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                <br/><br/>
-                Why do we use it?<br/>
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                <br/><br/>
+                NAVRANG referring to nine colours resembles 'nine emotions' is the essence crafted with the work. Navrang, well to be in official terms, is a society but unofficially it is a Family. It is a place where you gain confidence because of your friends who eventually becomes your family when you steps in.<br /> <br />
+                Navrangis/ Navrangians come along and live life of a numerous characters, feel and experience the numerous new colours (Navrang) and explore the unexplored to roar for themselves. <br /> <br />
+                The society is flourishing/booming since 2013 when it had performed it's most celebrated/ dignified and highly appreciated play of all time, Jaan-E-Man which was an impeccable piece of Art which was directed by the founder member of the society and, Mrigtrishna directed by Manoj Vairagi which always instigated our audience to give us their much love and appreciation whenever Navrang had performed. We continuously takes part in competitions and aims to learn something new as we all believe the famous quote that states “either we win or we learn ! We never lose”. From many years, we are trying our best to maintain the legacy and dignity that was passed on to us by our seniors and we will be trying this further too as long as we serve this society. <br/>
             </p>
 
         </Container>

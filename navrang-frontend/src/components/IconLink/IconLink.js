@@ -6,8 +6,8 @@ import InstagramIcon from './../../assets/icons/instagram.png';
 import FacebookIcon from './../../assets/icons/facebook.png';
 import GithubIcon from './../../assets/icons/github.svg';
 import EmailIcon from './../../assets/icons/email.png';
-import LocationIcon from './../../assets/icons/phone.png';
-import PhoneIcon from './../../assets/icons/location.svg';
+import LocationIcon from './../../assets/icons/location.svg';
+import PhoneIcon from './../../assets/icons/phone.png';
 import LinkedInIcon from './../../assets/icons/linkedIn.png';
 
 const iconLink = (props) => {
