@@ -28,12 +28,12 @@ export const formSubmit = (formData, url) => {
             .then(response => {
                 dispatch({
                     type: actionTypes.ADMIN_FORM_SUCCESS,
-                    message: "New Entry Added" 
+                    message: response.data.message
                 }) 
             })
             .catch(err => dispatch({
                 type: actionTypes.ADMIN_FORM_FAILED,
-                error: "Something Went Wrong, Sorry"
+                error: err.data.message
             }));
             
     }

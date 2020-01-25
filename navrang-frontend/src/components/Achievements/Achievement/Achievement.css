@@ -28,6 +28,11 @@
     text-align: center;
 }
 
+.SubtitleContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 
 @media (max-width: 540px) {
     .Achievement {

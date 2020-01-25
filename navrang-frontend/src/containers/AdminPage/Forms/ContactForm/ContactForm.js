@@ -30,7 +30,7 @@ class ContactForm extends Component {
                     validation: {
                         isEmail: true 
                     },
-                    valid: false,
+                    valid: true,
                     touched: false
                 },
                 phone: {
@@ -43,7 +43,7 @@ class ContactForm extends Component {
                         isPhone: true
                     },
                     value: "",
-                    valid: false,
+                    valid: true,
                     touched: false 
                 },
             },

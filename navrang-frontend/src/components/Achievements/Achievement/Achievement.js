@@ -11,9 +11,13 @@ const Achievement = (props) => {
             <hr />
             <Title>{props.title}</Title>
             <hr />
-            <div className={classes.Subtitle}>{props.subtitle}</div>
+            <div className={classes.Subtitle}>
+                {props.subtitle}
+            </div>
             <hr />
             <p>{props.description}</p>
+            <hr />
+            {props.date}
         </div>
     );
 } 

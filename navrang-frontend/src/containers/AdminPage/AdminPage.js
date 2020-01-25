@@ -25,21 +25,22 @@ class AdminPage extends Component {
         let currentPreview;
         switch (this.props.currentSetting) {
             case "events": 
+                
                 currentPreview =  (<EventCard 
                     imageUrl={this.props.data[index].imageUrl}
                     link={this.props.data[index].registrationLink}
                     info={this.props.data[index].info}
-                    date={this.props.data[index].lastDate}
+                    date={new Date(this.props.data[index].lastDate).toDateString()}
                 />);
                 this.props.onChangePreview(currentPreview);
                 break;
             case "achievements": 
-            
+
                 currentPreview = (<AchievementCard 
                     imageUrl={this.props.data[index].imageUrl}
-                    title={this.props.data[index].link}
+                    title={this.props.data[index].title}
                     subtitle={this.props.data[index].subtitle}
-                    date={this.props.data[index].date}
+                    date={new Date(this.props.data[index].date).toDateString()}
                     description={this.props.data[index].content}
                 />);
                 this.props.onChangePreview(currentPreview);
@@ -66,7 +67,7 @@ class AdminPage extends Component {
             case "notices":         
                 currentPreview = (<NoticeCard 
                     title={this.props.data[index].title}
-                    date={this.props.data[index].date}
+                    date={new Date(this.props.data[index].date).toDateString()}
                     content={this.props.data[index].content}
                     name={this.props.data[index].name}
                     designation={this.props.data[index].designation}
@@ -82,7 +83,7 @@ class AdminPage extends Component {
                     content={this.props.data[index].content}
                     name={this.props.data[index].senderName}
                     email={this.props.data[index].senderEmail}
-                    date={this.props.data[index].date}
+                    date={new Date(this.props.data[index].lastDate).toDateString()}
                 />);
                 this.props.onChangePreview(currentPreview);
                 

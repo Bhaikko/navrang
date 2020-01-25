@@ -49,7 +49,7 @@ class EventForm extends Component {
                 info: {
                     elementType: "textarea",
                     elementConfig: {
-                        placeholder: "About The Event... \n Event Details, Venue, Timings"
+                        placeholder: "About The Event... \nEvent Details, Venue, Timings"
                     },
                     value: "",
                     validation: {

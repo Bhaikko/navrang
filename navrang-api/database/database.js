@@ -155,7 +155,6 @@ const Notices = database.define("notices", {
     },
     filePublicId: {
         type: Sequelize.STRING,
-        allowNull: false
     }
 });
 

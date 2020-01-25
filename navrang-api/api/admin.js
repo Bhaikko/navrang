@@ -1,20 +1,30 @@
 const { 
     CLOUDINARY_API_KEY, 
     CLOUDINARY_API_SECRET, 
-    CLOUDINARY_CLOUD_NAME 
+    CLOUDINARY_CLOUD_NAME,
+    MAILGUN_API_KEY,
+    MAILGUN_DOMAIN,
+    TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN,
+    TWILIO_PHONE_NUMBER 
 } = require("./../environments");
 
 const express = require("express");
 const multer = require("multer");
-const fs = require('fs');
 const cloudinary = require('cloudinary').v2;
+const twilio = require('twilio');
+const mailgun = require("mailgun-js");
 
 const databaseHandler = require("../database"); 
 
 const router = express.Router();
-// const client = require("twilio")(TWILIO_ACC_SID, TWILIO_AUTH_TOKEN);
-// const mailgun = require("mailgun-js");
-// const mg = mailgun({apiKey: MAIL_GUN_API_KEY, domain: MAIL_GUN_DOMAIN});
+
+const mg = mailgun({
+    apiKey: MAILGUN_API_KEY, 
+    domain: MAILGUN_DOMAIN
+});
+
+const client = new twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const upload = multer({ dest: './uploads' });
 
@@ -99,7 +109,7 @@ router.delete("/achievements", (req, res, next) => {
 });
 
 router.delete("/issues", (req, res, next) => {
-    databaseHandler.deleteIssue(req.params.id)
+    databaseHandler.deleteIssue(req.body.id)
         .then(response => {
             responseHandler(res, "Issue Deleted Successfully");
         })
@@ -182,32 +192,91 @@ router.delete("/team", (req, res, next) => {
 
 });
 
-router.post("/notices", upload.single("files"), (req, res, next) => {
-    const filename = __dirname + '/../uploads/' + req.file.filename;
+const addNotice = (req, res, result) => {
+    return databaseHandler.addNotice(
+        req.body.title, 
+        req.body.content,
+        req.body.name,
+        req.body.designation,
+        req.body.date,
+        result.url,
+        result.public_id
+    )
+        .then(response => {
+            databaseHandler.getContacts()
+                .then(contacts => {
+                    contacts.map(contact => {
+                        const current = contact.get();
+                        if (current.email) {
+                            // MAILGUN
+                            const data = {
+                                from: 'navrang-pgdav@gmail.com',    // society email
+                                to: current.email,
+                                subject: 'A New Notice Has Been Uploaded on our site, ',    // add domain here
+                                text: `
+                                    Hi ${current.name}.
+                                    I hope you doing well.
+                                    A new notice has being uploaded on our site regarding ${req.body.title}.
+                                    Don't forget to check it out.
+                                    Thank you.
+                                `.trim()
+                            };
+        
+                            mg.messages().send(data)
+                                .then(() => console.log(`Email Sent To ${current.email}`))
+                                .catch(console.log);
+                        }
 
-    cloudinary.uploader.upload(filename)
-        .then(result => {
-            databaseHandler.addNotice(
-                req.body.title, 
-                req.body.content,
-                req.body.name,
-                req.body.designation,
-                req.body.date,
-                result.url,
-                result.public_id
-            )
-                .then(response => {
-                    // Use Mailgun and Twilio
-                    responseHandler(res, "Notice Added Successfully");
-                })
+                        if (current.phone) {
+                            // TWILIO
+                            client.messages.create({
+                                body: `
+                                    Hi ${current.name}.
+                                    I hope you doing well.
+                                    A new notice has being uploaded on our site regarding ${req.body.title}.
+                                    Don't forget to check it out.
+                                    Thank you.
+                                `.trim(),
+                                to: "+91" + current.phone,
+                                from: TWILIO_PHONE_NUMBER 
+                            })
+                            .then(() => console.log(`SMS Sent To ${current.phone}`))
+                            .catch(console.log);
+                        }
+                    });
+
+                });
+            responseHandler(res, "Notice Added Successfully");
         })
         .catch(err => {
             errorHandler(res, err);
+        })
+}
+
+router.post("/notices", upload.single("files"), (req, res, next) => {
+    
+    if (req.file) {
+        const filename = __dirname + '/../uploads/' + req.file.filename;
+        cloudinary.uploader.upload(filename)
+            .then(result => {
+                addNotice(req, res, result);
+            })
+            .catch(err => {
+                errorHandler(res, err);
+            });
+    } else {
+        addNotice(req, res, {
+            url: "",
+            public_id: "abc"
         });
+    }
+
+    
+
 });
 
 router.delete("/notices", (req, res, next) => {
-    cloudinary.uploader.destroy(req.body.public_id)
+    cloudinary.uploader.destroy(req.body.public_id || "abc")
         .then(() => {
             databaseHandler.deleteNotice(req.body.id)
                 .then(response => {
@@ -235,7 +304,7 @@ router.post("/contacts", (req, res, next) => {
 });
 
 router.delete("/contacts", (req, res, next) => {
-    databaseHandler.deleteContact(req.params.id)
+    databaseHandler.deleteContact(req.body.id)
         .then(response => {
             responseHandler(res, "Contact Deleted Successfully");
         })
