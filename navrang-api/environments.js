@@ -9,6 +9,7 @@ const {
 
 const PORT = 4000;
 module.exports.PORT = PORT;
+
 module.exports.SERVER_URL = `http://127.0.0.1:${PORT}/`;
 
 module.exports.TOKEN_SECRET_KEY = TOKEN_SECRET_KEY;
