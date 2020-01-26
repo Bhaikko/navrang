@@ -1,6 +1,6 @@
 
 .ContactContainer {
-    width: 25%;
+    width: 10%;
     display: inline-block;
     align-items: center;
     vertical-align: middle;
@@ -14,8 +14,8 @@
 
 @media (max-width: 540px) {
     .ContactContainer {
-        width: 40%;
-        margin-right: 20px;
+        width: 48px;
+        margin-left: 10px; 
     }
-}
 
+}

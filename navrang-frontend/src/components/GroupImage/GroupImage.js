@@ -5,9 +5,6 @@ import classes from './GroupImage.css';
 import groupImagePhoto from './../../assets/images/groupImage.jpeg';
 
 const GroupImage = (props) => {
-
-    
-
     const parallaxEffect = () => {
         const parallax = document.getElementById("parallax");
         let offset = window.pageYOffset;

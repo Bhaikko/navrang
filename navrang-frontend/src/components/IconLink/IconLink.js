@@ -4,9 +4,9 @@ import classes from './IconLink.css';
 
 import InstagramIcon from './../../assets/icons/instagram.png';
 import FacebookIcon from './../../assets/icons/facebook.png';
-import GithubIcon from './../../assets/icons/github.svg';
+import GithubIcon from './../../assets/icons/github.png';
 import EmailIcon from './../../assets/icons/email.png';
-import LocationIcon from './../../assets/icons/location.svg';
+import LocationIcon from './../../assets/icons/location.png';
 import PhoneIcon from './../../assets/icons/phone.png';
 import LinkedInIcon from './../../assets/icons/linkedIn.png';
 
@@ -41,11 +41,11 @@ const iconLink = (props) => {
     }
 
     return (
-        <a  target="_blank" href={props.contact} rel="noopener noreferrer">
-            <div className={classes.ContactContainer} style={{...props.style}}>
+        <div className={classes.ContactContainer} style={{...props.style}}>
+            <a  target="_blank" href={props.contact} rel="noopener noreferrer">
                 <img className={classes.Contact} alt="contact" src={icon} /> 
-            </div>
-        </a>
+            </a>
+        </div>
     );
 }
 

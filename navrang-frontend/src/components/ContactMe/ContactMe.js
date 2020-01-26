@@ -13,11 +13,11 @@ const contactMe = (props) => {
                 <IconLink
                     icon="github"
                     contact="https://github.com/Bhaikko"
-                    style={{width: "2%", marginLeft: "10px"}} />
+                />
                 <IconLink
                     icon="linkedIn"
-                    contact="https://www.linkedin.com/in/siddharth-pawar-81172b186/"
-                    style={{width: "2%", marginLeft: "10px"}} />
+                    contact="https://www.linkedin.com/in/siddharth-pawar-81172b186/"    
+                />
             </div>
         </Container>
     );

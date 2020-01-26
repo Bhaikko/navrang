@@ -12,9 +12,14 @@
     align-items: center;
 }
 
+
 @media (max-width: 540px) {
     .Container {
         flex-direction: column;
+    }
+    .ContactForm {
+        margin-top: 10%;    
+        width: 100%;
     }
 }
 
