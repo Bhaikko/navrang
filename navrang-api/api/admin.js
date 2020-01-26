@@ -3,16 +3,12 @@ const {
     CLOUDINARY_API_SECRET, 
     CLOUDINARY_CLOUD_NAME,
     MAILGUN_API_KEY,
-    MAILGUN_DOMAIN,
-    TWILIO_ACCOUNT_SID,
-    TWILIO_AUTH_TOKEN,
-    TWILIO_PHONE_NUMBER 
+    MAILGUN_DOMAIN
 } = require("./../environments");
 
 const express = require("express");
 const multer = require("multer");
 const cloudinary = require('cloudinary').v2;
-const twilio = require('twilio');
 const mailgun = require("mailgun-js");
 
 const databaseHandler = require("../database"); 
@@ -23,8 +19,6 @@ const mg = mailgun({
     apiKey: MAILGUN_API_KEY, 
     domain: MAILGUN_DOMAIN
 });
-
-const client = new twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const upload = multer({ dest: './uploads' });
 
@@ -219,30 +213,13 @@ const addNotice = (req, res, result) => {
                                     A new notice has being uploaded on our site regarding ${req.body.title}.
                                     Don't forget to check it out.
                                     Thank you.
-                                `.trim()
+                                `
                             };
         
                             mg.messages().send(data)
                                 .then(() => console.log(`Email Sent To ${current.email}`))
                                 .catch(console.log);
-                        }
-
-                        if (current.phone) {
-                            // TWILIO
-                            client.messages.create({
-                                body: `
-                                    Hi ${current.name}.
-                                    I hope you doing well.
-                                    A new notice has being uploaded on our site regarding ${req.body.title}.
-                                    Don't forget to check it out.
-                                    Thank you.
-                                `.trim(),
-                                to: "+91" + current.phone,
-                                from: TWILIO_PHONE_NUMBER 
-                            })
-                            .then(() => console.log(`SMS Sent To ${current.phone}`))
-                            .catch(console.log);
-                        }
+                        };
                     });
 
                 });

@@ -32,12 +32,11 @@ class Alumni extends Component {
         })
     }
     render () {
-
         return (
             <div className={classes.Alumni} style={this.state.animation}>
                 {this.props.team.map(member => <Card 
                     key={member.id}
-                    imageUrl={member.imageLink} 
+                    imageUrl={member.imageUrl} 
                     name={member.name}
                     designation={member.designation}
                     contact={member.contactLink}

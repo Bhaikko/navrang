@@ -9,7 +9,7 @@ import axios from './../../../axios';
 import classes from './ContactForm.css';
 
 const initialContactForm = {
-    name: {
+    senderName: {
         elementType: "input",
         elementConfig: {
             type: "text",
@@ -22,7 +22,7 @@ const initialContactForm = {
         valid: false,
         touched: false
     },
-    email: {
+    senderEmail: {
         elementType: "input",
         elementConfig: {
             type: "email",
@@ -36,7 +36,7 @@ const initialContactForm = {
         valid: false,
         touched: false
     },
-    message: {
+    content: {
         elementType: "textarea",
         elementConfig: {
             placeholder: "Your Message..."
@@ -93,6 +93,7 @@ class ContactForm extends Component {
 
         axios.post("/public/issues", formData)
             .then(res => {
+                
                 this.setState({
                     loading: false, 
                     contactForm: initialContactForm

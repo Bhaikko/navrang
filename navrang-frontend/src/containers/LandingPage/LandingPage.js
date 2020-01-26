@@ -23,7 +23,7 @@ class LandingPage extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            loading: false,
+            loading: true,
             alumni: null,
             achievements: null 
         }
@@ -32,12 +32,11 @@ class LandingPage extends Component {
     componentDidMount () {
         axios.get("/public/front")
             .then(data => {
-                console.log(data);
-                // this.setState({
-                //     alumni: [data.data[0], data.data[1], data.data[2]],
-                //     achievements: data.data[3],
-                //     loading: false
-                // })
+                this.setState({
+                    alumni: [data.data[0], data.data[1], data.data[2]],
+                    achievements: data.data[3],
+                    loading: false
+                })
             });
     }
 
@@ -52,7 +51,7 @@ class LandingPage extends Component {
         return (
             <div className={classes.LandingPage}>
                 <GroupImage />
-                {/* <Container>
+                <Container>
                     <Title >Achievements</Title>
                     <Achievements achievements={this.state.achievements} animate />
                     <Link to="/achievements" style={{textDecoration: "none"}}>
@@ -67,7 +66,7 @@ class LandingPage extends Component {
                     <Link to="/alumni" style={{textDecoration: "none"}}>
                         <Button>Meet The Team</Button>
                     </Link>
-                </Container> */}
+                </Container>
 
                 <AboutUs id="aboutUs" />
                 <ContactUs id="contactUs" />
