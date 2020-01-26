@@ -13,10 +13,12 @@ const contactMe = (props) => {
                 <IconLink
                     icon="github"
                     contact="https://github.com/Bhaikko"
-                />
+                    classes={classes.IconLink}
+                    />
                 <IconLink
                     icon="linkedIn"
-                    contact="https://www.linkedin.com/in/siddharth-pawar-81172b186/"    
+                    contact="https://www.linkedin.com/in/siddharth-pawar-81172b186/"
+                    classes={classes.IconLink}
                 />
             </div>
         </Container>

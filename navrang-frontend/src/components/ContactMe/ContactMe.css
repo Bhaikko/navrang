@@ -3,7 +3,15 @@
     margin-top: 2%;
 }
 
-.Icon {
-    display: inline-block;
-    width: "30%";
+.IconLink {
+    width: 2%;
+    margin-left: 10px;
 }
+
+
+@media (max-width: 540px) {
+    .IconLink {
+        width: 7%; 
+    }
+}
+

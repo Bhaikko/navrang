@@ -41,6 +41,7 @@ class Achievements extends Component {
                     title={achievement.title} 
                     description={achievement.content} 
                     subtitle={achievement.subtitle} 
+                    date={new Date(achievement.date).toDateString()}
                 />)}
             </div>
         );    

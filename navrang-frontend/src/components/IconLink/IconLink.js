@@ -41,7 +41,7 @@ const iconLink = (props) => {
     }
 
     return (
-        <div className={classes.ContactContainer} style={{...props.style}}>
+        <div className={[classes.ContactContainer, props.classes].join(" ")} style={{...props.style}}>
             <a  target="_blank" href={props.contact} rel="noopener noreferrer">
                 <img className={classes.Contact} alt="contact" src={icon} /> 
             </a>

@@ -5,6 +5,7 @@ import classes from './Achievement.css';
 import Title from '../../UI/Title/Title';
 
 const Achievement = (props) => {
+    console.log(props.date);
     return (
         <div className={classes.Achievement}>
             <img alt="projectImage" src={props.imageUrl}/>
