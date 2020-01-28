@@ -139,7 +139,7 @@ class AdminPage extends Component {
                         <hr />
                         <div className={classes.Preview}>
                             {this.props.currentPreview ? (
-                                <div>
+                                <div className={classes.CurrentPreviewContainer}>
                                     {this.props.currentPreview}
                                 </div>
                             ) : (

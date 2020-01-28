@@ -3,8 +3,8 @@ const {
     CLOUDINARY_API_KEY,
     CLOUDINARY_API_SECRET,
     CLOUDINARY_CLOUD_NAME,
-    MAILGUN_API_KEY,
-    MAILGUN_DOMAIN
+    EMAIL,
+    PASSWORD
 } = require('./credentials');
 
 const PORT = 4000;
@@ -18,5 +18,5 @@ module.exports.CLOUDINARY_CLOUD_NAME = CLOUDINARY_CLOUD_NAME;
 module.exports.CLOUDINARY_API_KEY = CLOUDINARY_API_KEY;
 module.exports.CLOUDINARY_API_SECRET = CLOUDINARY_API_SECRET;
 
-module.exports.MAILGUN_API_KEY = MAILGUN_API_KEY;
-module.exports.MAILGUN_DOMAIN = MAILGUN_DOMAIN;
+module.exports.EMAIL = EMAIL;
+module.exports.PASSWORD = PASSWORD;

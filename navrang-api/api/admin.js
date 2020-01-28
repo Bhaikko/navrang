@@ -2,23 +2,19 @@ const {
     CLOUDINARY_API_KEY, 
     CLOUDINARY_API_SECRET, 
     CLOUDINARY_CLOUD_NAME,
-    MAILGUN_API_KEY,
-    MAILGUN_DOMAIN
+    EMAIL,
+    PASSWORD
 } = require("./../environments");
 
 const express = require("express");
 const multer = require("multer");
 const cloudinary = require('cloudinary').v2;
-const mailgun = require("mailgun-js");
+const nodemailer = require('nodemailer');
 
 const databaseHandler = require("../database"); 
 
 const router = express.Router();
 
-const mg = mailgun({
-    apiKey: MAILGUN_API_KEY, 
-    domain: MAILGUN_DOMAIN
-});
 
 const upload = multer({ dest: './uploads' });
 
@@ -202,23 +198,36 @@ const addNotice = (req, res, result) => {
                     contacts.map(contact => {
                         const current = contact.get();
                         if (current.email) {
-                            // MAILGUN
-                            const data = {
-                                from: 'navrang-pgdav@gmail.com',    // society email
-                                to: current.email,
-                                subject: 'A New Notice Has Been Uploaded on our site, ',    // add domain here
-                                text: `
-                                    Hi ${current.name}.
-                                    I hope you doing well.
-                                    A new notice has being uploaded on our site regarding ${req.body.title}.
-                                    Don't forget to check it out.
-                                    Thank you.
-                                `
-                            };
-        
-                            mg.messages().send(data)
-                                .then(() => console.log(`Email Sent To ${current.email}`))
-                                .catch(console.log);
+                            const message = `
+                                Hi ${current.name}.
+                                I hope you doing well.
+                                A new notice has being uploaded on our site regarding ${req.body.title}.
+                                Don't forget to check it out.
+                                Thank you.
+                            `;
+
+                            let transporter = nodemailer.createTransport({
+                                host: "smtp.gmail.com",
+                                port: 587,
+                                secure: false, 
+                                auth: {
+                                  user: EMAIL, 
+                                  pass: PASSWORD 
+                                }
+                            });
+
+                            const mailOptions = {
+                                from: EMAIL,
+                                to: current.email, 
+                                subject: 'A New Notice Has Been Uploaded on our site, navrang-pgdav.herokuapp.com/',
+                                text: message
+                            }
+
+                            transporter.sendMail(mailOptions, function(error, response){
+                                if (error) {
+                                    console.log(error);
+                                } 
+                            });
                         };
                     });
 

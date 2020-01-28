@@ -28,6 +28,10 @@
     flex-direction: column;
 }
 
+.CurrentPreviewContainer {
+    width: 100%;
+}
+
 .Preview {
     width: 100%;
     max-height: 60vh;
