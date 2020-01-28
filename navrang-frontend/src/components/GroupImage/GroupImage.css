@@ -4,19 +4,21 @@
     background-size: cover;
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .Typing {
     margin: 0;
-    padding-left: 10vw;
-    padding-top: 15vh;
+    margin-bottom: 10px;
     position: relative;
     text-transform: uppercase;
     letter-spacing: 10px;
     line-height: 75px;
-    color: black;
-    font-family: 'Poppins', sans-serif;
-    
+    color: white;
+    text-align: center;    
+    font-size: 30px;
 }
 
 .Typing::after {
@@ -24,7 +26,7 @@
     width: 1px;
     height: 10%;
     right: -10px;
-    border-right: 5px solid black;
+    border-right: 5px solid white;
     animation: blink 0.5s infinite ease;
     
 }
@@ -41,15 +43,14 @@
 
 @media (max-width: 540px) {
     .GroupImageContainer {
-        height: 70vh;
+        height: 85vh;
         background-size: cover;
         background-position: center;
     }
 
     .Typing {
-        padding-top: 8vh;
-        font-size: 16px;
-        line-height: 30px; 
+        font-size: 26px;
+        line-height: 50px; 
     }
 }
 

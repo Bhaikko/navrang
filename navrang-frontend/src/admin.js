@@ -11,7 +11,6 @@ import dashboardReducer from './store/reducer/dashboard';
 import formReducer from './store/reducer/form';
 import authReducer from './store/reducer/auth';
 
-import * as serviceWorker from './serviceWorker';
 
 const rootReducer = combineReducers({
     dashboard: dashboardReducer,
@@ -29,4 +28,3 @@ const app = (
 
 ReactDOM.render(app, document.getElementById('root'));
 
-serviceWorker.unregister();

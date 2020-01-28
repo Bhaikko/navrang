@@ -32,17 +32,12 @@ class LandingPage extends Component {
     componentDidMount () {
         axios.get("/public/front")
             .then(data => {
-                if (!data.data[0] || !data.data[1] || !data.data[2] || data.data[3]) {
-                    this.setState({
-                        loading: true
-                    })
-                } else {
-                    this.setState({
-                        alumni: [data.data[0], data.data[1], data.data[2]],
-                        achievements: data.data[3],
-                        loading: false
-                    });
-                }
+                
+                this.setState({
+                    alumni: [data.data[0], data.data[1], data.data[2]],
+                    achievements: data.data[3],
+                    loading: false
+                });
             });
     }
 

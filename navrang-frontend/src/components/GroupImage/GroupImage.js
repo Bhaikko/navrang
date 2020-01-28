@@ -46,13 +46,13 @@ const GroupImage = (props) => {
     
 
     return (
-        <div className={classes.GroupImageContainer} style={{backgroundImage: `url(${groupImagePhoto})`}} id="parallax" >
-            <h1 className={classes.Typing} id="text">
-                We Are Navrang,\
-                The Theatre Society Of\
-                PGDAV College.
-            </h1>
-        </div>
+        <React.Fragment>
+            <div className={classes.GroupImageContainer} style={{backgroundImage: `url(${groupImagePhoto})`}} id="parallax" >
+                <h1 className={classes.Typing} id="text">
+                    We Are Navrang, The Theatre Society Of P.G.D.A.V. College.
+                </h1>
+            </div>
+        </React.Fragment>
     );
 }
 

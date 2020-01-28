@@ -34,6 +34,7 @@ export const loginAttempt = (formData) => {
 }
 
 export const logout = () => {
+    localStorage.clear('token');
     return {
         type: actionTypes.ADMIN_LOGOUT
     }

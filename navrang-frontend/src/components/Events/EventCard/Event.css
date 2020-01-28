@@ -1,29 +1,33 @@
 .CardContainer {
     flex-basis: 25%;
-    /* width: 25%; */
-    height: "50vh";
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
     margin: 30px;
-    
 }
 
-.ImageContainer {
-    background-size: cover;
-    padding: 100px;
-    height: 150px;
+
+.ImageContainer>img {
+    width: 100%;
 }
 
 .Register {
-    margin-left: 30%;
-
+    text-align: center;
     text-decoration: none;
     color: red;
+    font-weight: bolder;
+}
+
+.Register>div {
+    text-align: center;
+}
+
+.Info {
+    text-align: center;
 }
 
 .LastDate {
     text-align: center;
+    color: green;
 }
 
 .ContactUs {

@@ -19,7 +19,8 @@ const card = (props) => {
             <IconLink 
                 icon="instagram"
                 contact={props.contact}
-                style={{width: "10%"}} />
+                style={{width: "10%"}} 
+            />
         </div>
     );  
 

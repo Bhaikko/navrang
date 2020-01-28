@@ -6,9 +6,11 @@ const event = props => {
     
     return (
         <div className={classes.CardContainer} >
-            <div className={classes.ImageContainer} style={{backgroundImage: `url(${props.imageUrl})`}}></div>
+            <div className={classes.ImageContainer}>
+                <img src={props.imageUrl} alt="..." />
+            </div>
             <hr />
-            <a className={classes.Register} href={props.link} target="_blank" rel="noopener noreferrer">Register Here</a>
+            <a className={classes.Register} href={props.link} target="_blank" rel="noopener noreferrer"><div>Register Here</div></a>
             <hr />
             <div className={classes.Info} >{props.info}</div>
             <hr />
