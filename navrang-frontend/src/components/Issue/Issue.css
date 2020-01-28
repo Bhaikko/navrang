@@ -1,7 +1,14 @@
+.Issue {
+    padding: 2%;
+}
 
 .Name {
     margin-top: 10px;
     text-align: right;
+}
+
+.Content {
+    text-align: center;
 }
 
 .Email {
@@ -10,7 +17,3 @@
     color: grey;
 }
 
-.Files a {
-    text-decoration: none;
-    color: blue;
-}

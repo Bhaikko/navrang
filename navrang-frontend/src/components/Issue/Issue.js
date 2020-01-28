@@ -5,7 +5,7 @@ import Title from './../UI/Title/Title';
 
 const issueCard = props => {
     return (
-        <div>
+        <div className={classes.Issue}>
             <Title>Issue</Title>
             <div className={classes.Content}>{props.content}</div>
             <div className={classes.Name}>{props.name},</div>

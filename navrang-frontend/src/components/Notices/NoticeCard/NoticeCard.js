@@ -5,7 +5,7 @@ import Title from './../../UI/Title/Title';
 
 const noticeCard = props => {
     return (
-        <div>
+        <div className={classes.NoticeCard}>
             <Title>Notice</Title>
             <div className={classes.Date}>{props.date}</div>
             <Title>{props.title}</Title>

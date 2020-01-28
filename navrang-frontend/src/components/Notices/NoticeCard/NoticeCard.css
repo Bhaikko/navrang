@@ -1,7 +1,14 @@
+.NoticeCard {
+    padding: 2%;
+}
 
 .Name {
     margin-top: 10px;
     text-align: right;
+}
+
+.Content {
+    text-align: center;
 }
 
 .Designation {

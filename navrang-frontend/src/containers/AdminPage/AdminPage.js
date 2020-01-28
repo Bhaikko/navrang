@@ -78,12 +78,11 @@ class AdminPage extends Component {
                 break;
 
             case "issues":
-                
                 currentPreview = (<IssueCard
                     content={this.props.data[index].content}
                     name={this.props.data[index].senderName}
                     email={this.props.data[index].senderEmail}
-                    date={new Date(this.props.data[index].lastDate).toDateString()}
+                    date={new Date(this.props.data[index].date).toDateString()}
                 />);
                 this.props.onChangePreview(currentPreview);
                 
@@ -136,18 +135,16 @@ class AdminPage extends Component {
 
                     </div>
                     <div className={classes.RightSection}>
-                        <div className={classes.RightSectionHeader}>
-                            <Title style={{display: "inline-block"}}>Preview</Title>
-                            <hr />
-                            <div className={classes.Preview}>
-                                {this.props.currentPreview ? (
-                                    <div>
-                                        {this.props.currentPreview}
-                                    </div>
-                                ) : (
-                                   <div>Please Select An Item To Preview</div>
-                                )}
-                            </div>
+                        <Title style={{display: "inline-block"}}>Preview</Title>
+                        <hr />
+                        <div className={classes.Preview}>
+                            {this.props.currentPreview ? (
+                                <div>
+                                    {this.props.currentPreview}
+                                </div>
+                            ) : (
+                                <div style={{textAlign: "center"}}>Please Select An Item To Preview</div>
+                            )}
                         </div>
                     </div>
 

@@ -1,5 +1,4 @@
 .Achievement {
-    /* max-height: 90vh; */
     width: 25vw;
     flex-basis: 25%;
     background-color: white;
@@ -13,7 +12,6 @@
 }
 
 .Achievement img {
-    /* position: absolute; */
     top: -5px;
     width: 100%;
     box-shadow: 5px solid grey;

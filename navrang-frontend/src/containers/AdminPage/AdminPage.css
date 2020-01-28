@@ -22,16 +22,18 @@
     width: 30%;
     height: 80vh;
     border: 2px solid black;
-}
-
-.RightSectionHeader {
-    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 }
 
 .Preview {
     width: 100%;
     max-height: 60vh;
     overflow: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .Form {
