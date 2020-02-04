@@ -12,6 +12,7 @@ const Notices = props => {
                 date={new Date(notice.date).toLocaleDateString()}
                 showModal={props.showModal}
                 id={notice.id}
+                fileUrl={notice.fileUrl}
             />)}
         </div>
     );

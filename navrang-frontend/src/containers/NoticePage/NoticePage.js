@@ -44,7 +44,7 @@ class NoticePage extends Component {
                 content={currentNotice.content}
                 name={currentNotice.name}
                 designation={currentNotice.designation}
-                files={currentNotice.files}
+                fileUrl={currentNotice.fileUrl}
             />
         )
         this.setState({

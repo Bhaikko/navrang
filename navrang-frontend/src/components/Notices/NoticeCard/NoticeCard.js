@@ -4,6 +4,7 @@ import classes from './NoticeCard.css';
 import Title from './../../UI/Title/Title';
 
 const noticeCard = props => {
+    
     return (
         <div className={classes.NoticeCard}>
             <Title>Notice</Title>
@@ -13,11 +14,15 @@ const noticeCard = props => {
             <div className={classes.Name}>{props.name},</div>
             <div className={classes.Designation}>{props.designation}</div>
             <hr />
-            <div className={classes.Files}>
-                <a  target="_blank" href={props.files} rel="noopener noreferrer" >
-                    Attached Files
-                </a>
-            </div>
+            {props.fileUrl ? (
+                <div className={classes.Files}>
+                    <a target="_blank" href={props.fileUrl} rel="noopener noreferrer" >
+                        Attached Files
+                    </a>
+                </div>
+            ) : (
+                <React.Fragment></React.Fragment>
+            )}
         </div>
     );
 }

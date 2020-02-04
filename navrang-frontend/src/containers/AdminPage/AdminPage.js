@@ -71,7 +71,7 @@ class AdminPage extends Component {
                     content={this.props.data[index].content}
                     name={this.props.data[index].name}
                     designation={this.props.data[index].designation}
-                    files={this.props.data[index].fileUrl}
+                    fileUrl={this.props.data[index].fileUrl}
                 />);
                 this.props.onChangePreview(currentPreview);   
             
